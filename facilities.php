@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>NEPALI STAY -FACILITIES </title>
+
+
+  <?php require('links.php'); ?>
+  <style>
+    .pop:hover {
+      border-top-color: var(--teal) !important;
+      transform: scale(1.03);
+      transition: all 0.3s;
+
+    }
+  </style>
+  <style>
+    
+
+    @media screen and (max-width:575px) {
+      .availability-form {
+        margin-top: 25px;
+        padding: 0 35px;
+      }
+    }
+
+    body {
+      background-color: whitesmoke;
+      /* Replace with your chosen color code */
+    }
+
+    .custom-navbar {
+      background-color: #65d9ee;
+      /* Dark Blue color */
+       }
+      /*for making footer same as the navbar*/
+      
+    .container-fluid-footer {
+    background-color: #65d9ee; /* change this to your desired background color */
+      }
+  
+  </style>
+</head>
+
+
+<body>
+  <?php require('header.php'); ?>
+
+  <div class="my-5 px-4">
+    <h2 class="fw-bold h-font text-center">OUR FACILITIES</h2>
+    <div class="h-line" style="width: 150px; height: 1.6px; background-color: black; margin: 10px auto;"></div>
+    <pre class="text-center mt-3">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis iste blanditiis quaerat,
+       ipsam dolores laudantium deleniti repellendus obcaecati quod assumenda porro, natus qui alias
+        molestiae accusantium praesentium nihil accusamus illum!
+    </pre>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-5 px-4">
+        <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+          <div class="d-flex align-items-center mb-2">
+            <img src="images/facilities/wifi.jpg" width="40px">
+            <h5 class="m-0 ms-3 ">WiFi</h5>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Atque qui illum molestias adipisci. Assumenda, incidunt commodi?
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-5 px-4">
+        <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+          <div class="d-flex align-items-center mb-2">
+            <img src="images/facilities/wifi.jpg" width="40px">
+            <h5 class="m-0 ms-3 ">WiFi</h5>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Atque qui illum molestias adipisci. Assumenda, incidunt commodi?
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-5 px-4">
+        <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+          <div class="d-flex align-items-center mb-2">
+            <img src="images/facilities/wifi.jpg" width="40px">
+            <h5 class="m-0 ms-3 ">WiFi</h5>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Atque qui illum molestias adipisci. Assumenda, incidunt commodi?
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5 px-4">
+        <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+          <div class="d-flex align-items-center mb-2">
+            <img src="images/facilities/wifi.jpg" width="40px">
+            <h5 class="m-0 ms-3 ">WiFi</h5>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Atque qui illum molestias adipisci. Assumenda, incidunt commodi?
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5 px-4">
+        <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+          <div class="d-flex align-items-center mb-2">
+            <img src="images/facilities/wifi.jpg" width="40px">
+            <h5 class="m-0 ms-3 ">WiFi</h5>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Atque qui illum molestias adipisci. Assumenda, incidunt commodi?
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-5 px-4">
+        <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+          <div class="d-flex align-items-center mb-2">
+            <img src="images/facilities/wifi.jpg" width="40px">
+            <h5 class="m-0 ms-3 ">WiFi</h5>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Atque qui illum molestias adipisci. Assumenda, incidunt commodi?
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <?php require('footer.php'); ?>
+  <!-- Start PHP code.
+    //require('footer.php');: Include and execute footer.php.
+      End PHP code.-->
+
+
+</body>
+
+</html>
