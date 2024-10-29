@@ -1,0 +1,153 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+header{
+    width:100%;
+    height:100vh; 
+    background: linear-gradient(green,blue,green);
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: changeimage 40s infinite linear;
+}
+nav{
+    width:100%; height:15vh;
+    background-color:green ;
+    color:white; display: flex; justify-content: space-between;
+    align-items: center; text-transform: uppercase;
+}
+/* Logo container styling */
+nav .logo {
+    display: flex;
+    align-items: center; /* Centers items vertically */
+}
+
+/* Styling for the logo text and image */
+.logo-txt {
+    margin-left: 4px;
+    font-size: 35px;
+    font-weight: 900;
+    box-shadow: 2px 0px 2px 4px;
+    cursor: pointer;
+    display: flex; /* Ensures text aligns with the image */
+    align-items: center; /* Vertically centers the text with the image */
+}
+
+/* Logo image styling */
+.logo-img {
+    width: 50px;  /* Adjust size as necessary */
+    height: auto; /* Keeps aspect ratio */
+    margin-right: 10px; /* Space between image and text */
+}
+.logo-txt:hover {
+    background-color: rgb(64, 179, 64);
+    padding: 4px;
+    border-radius: 4px;
+}
+nav .menu{
+   margin: 10px; width:45%; text-align: center;
+}
+nav .menu{
+    cursor: pointer;
+    font-size:20px;
+    font-weight: 900;
+    box-shadow: 2px 0px 2px 4px;
+}
+.menu h2:hover{
+    background-color: rgb(64, 179, 64);
+}
+
+main{
+    width:100%;
+    height:85vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    color:white;
+}
+section h3{
+    font-size: 35px; font-weight: 200; letter-spacing: 3px;
+    text-shadow:1px 1px 2px black;
+}
+section h1{
+    margin:30px 0 20px 0;
+    font-size:55px;
+    font-weight:700;
+    text-shadow:2px 1px 5px gray;
+    text-transform:uppercase;
+    color:white;
+}
+section p{
+    font-size:31px;
+    font-weight:lighter;
+    word-spacing:2px;
+    margin-bottom:25px;
+    text-shadow: 1px 1px 1px black;
+}
+section a{
+   padding:12px 30px;
+   border-radius:4px;
+   outline:none;
+   text-transform:uppercase;
+   font-size:29px;
+   font-weight:500;
+   text-decoration:none;
+   letter-spacing:1px; 
+   transition: all 4s ease-out;
+}
+section .button1{
+background: skyblue;
+color: black;
+}
+.button1:hover{
+    background-color:orange;
+    Color: black;
+}
+section .button2{
+    background: skyblue;
+    color:black;
+}
+.button2:hover{
+    background:yellow;
+    color:blue;
+}
+.change_content:after{
+    content:'';
+    animation: changetext 40s infinite linear;
+    color:rgb(47, 255, 92);
+}
+
+@keyframes changetext{
+    0%{content:"with affordable room";}
+    19%{content:"with 24/7 availability service";}
+    35%{content:"comprehensive room services";}
+    49%{content:"user friendly platform";}
+    67%{content:"customer focus";}
+    82%{content:"transparency";}
+    100%{content:"local food services too";}
+}
+@keyframes changeimage{
+    0%{
+        background-image: url('bg_img/1.png'); 
+    }
+    19%{
+        background-image: url('bg_img/2.png'); 
+    }
+    35%{
+        background-image: url('bg_img/3.png'); 
+    }
+    49%{
+        background-image: url('bg_img/4.png'); 
+    }
+    67%{
+        background-image: url('bg_img/9.png'); 
+    }
+    82%{
+        background-image: url('bg_img/7.png'); 
+    }
+    100%{
+        background-image: url('bg_img/8.png'); 
+    }
+}
