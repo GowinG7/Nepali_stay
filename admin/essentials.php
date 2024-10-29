@@ -1,44 +1,106 @@
- 
- <?php
-   
-  /* alert ,success, error jasto function haru yesma rakhxau
- kinaki aba sabbai tira kati lekhney so 
-  */
+<?php
 
+// Define constants for image paths
+define('SITE_URL', 'http://127.0.0.1/nepali_stay/');
+define('ABOUT_IMG_PATH', SITE_URL . 'images/about/');
+define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Nepali_stay/images/');
+define('ABOUT_FOLDER', 'about/');
+define('USERS_FOLDER', 'users/'); // Missing semicolon added
 
-    //user login xa ki nai banerw check grna session 
-   //bina login nagarii user le aru file kholna thalxa baney teslai login panel ma rediect grna 
-   function adminLogin(){
-      session_start();
-     if(!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin']==true)){
-         echo "<script>
-        window.location.href= 'index.php';
-        </script>
-        ";
-     exit; //jaba hmle kunai url ma redirect gryeu exit call bayerw tala ko scripts bnda hoss
-     } 
-    // session_regenerate_id(true); //delete old session so its prevent from session hijacking
-
-     }
-
-
-      //yo function ma hmle jaba url pass grxau tyo url ma yo function le redirect grxa(laiijanxa)
-    function redirect($url){
-     echo "<script>
-        window.location.href='$url';
+// Function to check if the user is logged in
+function adminLogin() {
+    session_start();
+    if (!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)) {
+        echo "<script>
+            window.location.href= 'index.php';
         </script>";
-        exit;
-        }
+        exit; // Redirect and exit script
+    }
+}
 
- function alert($type,$msg){
-     // If the $type is "success", set $bs_class to "alert-success"
-    // Otherwise, set it to "alert-danger" for error or failure messages
-   $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
+// Function to redirect to a specific URL
+function redirect($url) {
+    echo "<script>
+        window.location.href='$url';
+    </script>";
+    exit;
+}
+
+// Function to display alerts
+function alert($type, $msg) {
+    $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
     echo <<<alert
-    <div class="alert $bs_class alert-dismissible fade show custom-alert role="alert">
+    <div class="alert $bs_class alert-dismissible fade show custom-alert" role="alert"> <!-- Fixed role attribute -->
         <strong class="me-3">$msg</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    alert; //intend milna parxa div ko
+    alert;
+}
 
- }
+// Function to upload images
+function uploadImage($image, $folder) {
+    $valid_mime = ['image/jpeg', 'image/png', 'image/webp'];
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img'; // Invalid image mime or format
+    } else if (($image['size'] / (1024 * 1024)) > 2) { // Check size
+        return 'inv_size'; // Invalid image size greater than 2mb
+    } else {
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG_' . random_int(11111, 99999) . ".$ext"; // Generate random name
+        $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
+
+        // Ensure the target directory exists
+        if (!is_dir(UPLOAD_IMAGE_PATH . $folder)) {
+            mkdir(UPLOAD_IMAGE_PATH . $folder, 0755, true); // Create the directory if it doesn't exist
+        }
+
+        if (move_uploaded_file($image['tmp_name'], $img_path)) {
+            return $rname; // Image upload success
+        } else {
+            return 'upd_failed'; // Upload failed
+        }
+    }
+}
+
+// Function to delete images
+function deleteImage($image, $folder) {
+    if (unlink(UPLOAD_IMAGE_PATH . $folder . $image)) {
+        return true; // Image deleted successfully
+    } else {
+        return false; // Image deletion failed
+    }
+}
+
+// Function to upload user images
+function uploadUserImage($image) {
+    $valid_mime = ['image/jpeg', 'image/png', 'image/webp'];
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img'; // Invalid image mime or format
+    } else {
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG_' . random_int(11111, 99999) . ".jpeg"; // Ensure correct format
+
+        $img_path = UPLOAD_IMAGE_PATH . USERS_FOLDER . $rname;
+
+        // Create image based on extension
+        if ($ext == 'png' || $ext == 'PNG') {
+            $img = imagecreatefrompng($image['tmp_name']);
+        } else if ($ext == 'webp' || $ext == 'WEBP') {
+            $img = imagecreatefromwebp($image['tmp_name']);
+        } else {
+            $img = imagecreatefromjpeg($image['tmp_name']);
+        }
+
+        if (imagejpeg($img, $img_path, 75)) { // 75 is image quality
+            return $rname; // Image upload success
+        } else {
+            return 'upd_failed'; // Upload failed
+        }
+    }
+}
+
+?>

@@ -1,12 +1,12 @@
 <?php
 // Database connection settings
-$servername = "localhost";  // Usually "localhost" for XAMPP
-$username = "root";         // Default XAMPP username
-$password = "";             // Default XAMPP password (empty)
-$dbname = "nepali_stay";  // Replace with your actual database name
+$hname = 'localhost';  // Usually "localhost" for XAMPP
+$uname = "root";         // Default XAMPP username
+$pass = "";             // Default XAMPP password (empty)
+$db = 'nepali_stay';  
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($hname, $uname, $pass, $db);
 
 // Check connection
 if (!$conn) {
