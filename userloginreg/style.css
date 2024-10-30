@@ -1,0 +1,37 @@
+ 
+ body{
+    padding:50px;
+    background-color: #f3eded;
+}
+.container{
+    max-width: 600px;
+    margin:0 auto;
+    padding:50px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.form-group{
+    margin-bottom:30px;
+}
+
+
+.form-container {
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around the form */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 90%; /* Increased width */
+    max-width: 400px; /* Maximum width for larger screens */
+}
+
+img {
+    max-width: 80%; /* Set max width for the logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.logo-container {
+    display: flex; /* Flex container for logo */
+    justify-content: center; /* Center the logo */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+}
