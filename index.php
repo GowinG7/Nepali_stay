@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webpage</title>
-    <link rel="stylesheet" href="userloginreg/index.css"/>
+    <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
     
@@ -13,7 +13,7 @@
         <nav>
             <div class="logo">  
                 <h3 class="logo-txt">
-                    <img src="Logo.jpg" alt="Logo" class="logo-img"> Nepali Stay
+                    <img src="userloginreg/Logo.jpg" alt="Logo" class="logo-img"> Nepali Stay
                 </h3> 
             </div>
             <div class="menu">
