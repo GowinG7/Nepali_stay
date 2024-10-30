@@ -26,7 +26,7 @@
                 <h3>Welcome To Nepal</h3>
                 <h1>Come and visit |<span class="change_content">  </span> | </h1>
                 <p>"Choosing <b>NEPALI STAY</b> is not enough"</p>
-                <a href="login_register/login.php" class="button1">User Login</a>
+                <a href="login-register/login.php" class="button1">User Login</a> <!-- yeha pailai login.php ma redirected grya xa so paxi session ma pardena raixa khaali xdney -->
                 <a href="admin/index.php" class="button2">Admin Login</a>
             </section>
         </main>
