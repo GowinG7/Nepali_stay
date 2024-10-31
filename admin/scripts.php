@@ -14,4 +14,24 @@
         `;
         document.body.append(element);
     }
+
+    </script>
+
+    <script>
+  function setActive()
+  {
+    navbar = document.getElementById('dashboard-menu'); //nav bar lai fetch grney nav-bar ko help ma
+    let a_tags = navbar.getElementsByTagName('a'); //nav-bar id dwara jati pani nav bar ma anchor tag xan tyo sablai fetch grney
+
+    for(i=0; i<a_tags.length; i++){
+      let file = a_tags[i].href.split('/').pop();
+      let file_name = file.split('.')[0];
+
+      if(document.location.href.indexOf(file_name) >=0 ){
+        a_tags[i].classList.add('active');
+      }
+    }
+  }
+  setActive();
+
 </script>

@@ -37,6 +37,8 @@
       }
     
   </style>
+
+
 </head>
 
 
@@ -397,25 +399,41 @@
 
 
   <!--Reach Us (google map embed)-->
+  <?php
+  $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+  $values = [1];
+  //euta matra row fetch grnu xa tei vayerw yei  dynamic banauney kaam gariraxau
+  $contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
+   
+  ?>
+
   <h2 class="mt-5 pt-4 mb-4  text-center fw-bold h-font">REACH US</h2>
   <div class="container mb-4">
     <div class="row">
       <div class=" col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
         <iframe class="w-100 rounded" height="320"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1767.492113834959!2d84.3955838013265!3d27.625005136718514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb7c551279b1%3A0x8ee7bd7338e56fbe!2sGodhuli%20Chulo!5e0!3m2!1sen!2snp!4v1724998887858!5m2!1sen!2snp"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          src="<?php echo $contact_r['iframe'] ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="bg-white p-4 rounded mb-4">
           <h5>Call us</h5>
-          <a href="tel: +977-9869610199" class="d-inline-block mb-2 text-decoration-none text-dark">
-            <i class="bi bi-telephone-fill"></i> +977-9869610199
+          <a href="tel: +<?php echo $contact_r['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+            <i class="bi bi-telephone-fill"></i> +<?php echo $contact_r['pn1'] ?> 
+            <!-- phone no. ko + thiyena uta so yeta + lekhna parya ..ajax ma kei special character haru send mildaina server ma teslai json ko through send grna prxa so-->
           </a>
           <br>
-          <a href="tel: +977-9869610199" class="d-inline-block mb-2 text-decoration-none text-dark">
-            <i class="bi bi-telephone-fill"></i> +977-9860117590
-          </a>
-          <br>
+        <!-- yo phone number compulsory xaina so dina ni sakxan nadina pani so-->
+         <?php
+          if($contact_r['pn2']!=''){
+           echo <<<data
+            <a href="tel: +$contact_r[pn2]" class="d-inline-block text-decoration-none text-dark">
+            <i class="bi bi-telephone-fill"></i> +$contact_r[pn2]
+            </a>
+            data;
+          }
+         ?>
+          
+          <br><br>
           <a href="mailto:godhulichulo1@gmail.com" class="d-inline-block mb-2 text-decoration-none text-dark">
             <i class="bi bi-envelope-fill"></i> godhulichulo1@gmail.com
           </a>
@@ -423,15 +441,16 @@
 
         <div class="bg-white p-4 rounded mb-4">
           <h5>Follow us</h5>
-          <a href="#" class="d-inline-block mb-3">
+
+          <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block mb-3">
             <span class="badge bg-light text-dark fs-6 p-2">
-              <i class="bi bi-facebook me-1"></i> Facebook
+              <i class="bi bi-facebook"></i> Facebook
             </span>
           </a>
           <br>
-          <a href="#" class="d-inline-block mb-3">
+          <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block mb-3">
             <span class="badge bg-light text-dark fs-6 p-2">
-              <i class="bi bi-instagram"></i> Instagram
+              <i class="bi bi-facebook"></i> Instagram
             </span>
           </a>
         </div>

@@ -23,14 +23,22 @@ if(!$con){
 function filteration($data)
 {
     foreach ($data as $key => $value) {
-        $data[$key] = trim($value);
-        $data[$key] = stripslashes($value);
-        $data[$key] = htmlspecialchars($value);
-        $data[$key] = strip_tags($data[$key]);
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = strip_tags($value);    
+        $value = htmlspecialchars($value);
+
+        $data[$key] = $value;
     }
     return $data; //aba filter bayerw josle yo function call grya xa tehi janxa
      }
-    /*  trim() #to remove extra spaces
+    /* updated ma: paila value lai filter garyeu ani paxi yei value lai paila ko ma replaced
+     muni ko le filteration grya thiyena only muni ko le matra kam grya thiyo
+      $data[$key] = trim($value);
+        $data[$key] = stripslashes($value);
+        $data[$key] = htmlspecialchars($value);
+        $data[$key] = strip_tags($data[$key]);
+      trim() #to remove extra spaces
         stripcslashes()  #remove backward slashes
         htmlspecialchars() #convert special charaters into html entities
         strip_tags()  #remove html tags -->like if we write html tags in input file it doesn't work

@@ -1,16 +1,16 @@
 <?php
+require('links.php');
+
 require('essentials.php');
 adminLogin(); //essentials file ma xa 
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Admin Panel - Dashboard</title>
-        <?php 
-        require('links.php')
-        ?>  
+        <title>Admin Panel - Dashboard</title> 
     </head>
     <body class="bg-light">
      

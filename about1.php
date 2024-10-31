@@ -13,8 +13,6 @@
     .box{
        border-top-color: var(--teal) !important;
     }
-  </style>
-  <style>
     @media screen and (max-width: 575px) {
       .availability-form {
         margin-top: 150px;
@@ -112,25 +110,20 @@
      <!-- Swiper -->
       <div class="swiper mySwiper">
           <div class="swiper-wrapper mb-5">
-            <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-              <img src="images/about/team.jpg" class="w-100">
-              <h5 class="mt-2">Random User</h5>  
-            </div>
-            <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-              <img src="images/about/one.jpg" class="w-100">
-              <h5 class="mt-2">Random User</h5>  
-            </div>
-            <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-              <img src="images/about/one.jpg" class="w-100">
-              <h5 class="mt-2">Random User</h5>  
-            </div>
-            <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-              <img src="images/about/team.jpg" class="w-100">
-              <h5 class="mt-2">Random User</h5>  
-            </div>
-          </div>
-
-            
+            <?php
+            $about_r = selectAll('team_details');//selectAll function kina ki db table -:team deatils ko sabb lai select grnu xa so
+            //image fetch garauna path chainxa aru jasari sajilo xaina yo ABOUT_IMG_PATH essentials ma xa
+            $path = ABOUT_IMG_PATH;
+             while($row = mysqli_fetch_assoc($about_r)){
+              echo<<<data
+                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                  <img src= "$path$row[picture]" class="w-100">
+                  <h5 class="mt-2">$row[name]</h5>  
+                </div>
+              data;
+             }
+            ?>
+          </div>          
         <div class="swiper-pagination"></div>
       </div>
     </div>
@@ -148,7 +141,6 @@
    <!-- Initialize Swiper -->
     <script>
       var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 4,
         spaceBetween: 40,
        pagination: {
         el: ".swiper-pagination",

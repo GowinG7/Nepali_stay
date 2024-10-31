@@ -3,10 +3,10 @@
 // Define constants for image paths
 define('SITE_URL', 'http://127.0.0.1/nepali_stay/');
 define('ABOUT_IMG_PATH', SITE_URL . 'images/about/');
+
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Nepali_stay/images/');
 define('ABOUT_FOLDER', 'about/');
-define('USERS_FOLDER', 'users/'); // Missing semicolon added
-
+define('CAROUSEL_FOLDER', 'carousel/');
 // Function to check if the user is logged in
 function adminLogin() {
     session_start();
@@ -39,7 +39,7 @@ function alert($type, $msg) {
 
 // Function to upload images
 function uploadImage($image, $folder) {
-    $valid_mime = ['image/jpeg', 'image/png', 'image/webp'];
+    $valid_mime = ['image/jpeg', 'image/png','image/webp'];
     $img_mime = $image['type'];
 
     if (!in_array($img_mime, $valid_mime)) {
