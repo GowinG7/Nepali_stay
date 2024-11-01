@@ -54,24 +54,25 @@ function add_image()
 function get_carousel(){
   //get member data from database
   let xhr = new XMLHttpRequest();
-  xhr.open("POST","ajax/settings_crud.php",true);
+  xhr.open("POST","ajax/carousel_crud.php",true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   /*xhr.onreadystatechange = function(){
     if(this.readyState==4 && this.status==200){
   //yesko satto short:*/
-    xhr.onload = function(){
-      document.getElementById('team-data').innerHTML = this.responseText;
+  xhr.onload = function () {
+      //carousel.php file ko carousel section ko <div class="row" id="carousel-data">
+      document.getElementById('carousel_data').innerHTML = this.responseText;
     }
 
   xhr.send('get_carousel');
 }
 
-function rem_member(val)
+function rem_image(val)
 {
   //remove member data from database so sr_no should be passed to delete
   let xhr = new XMLHttpRequest();
-  xhr.open("POST","ajax/settings_crud.php",true);
+  xhr.open("POST","ajax/carousel_crud.php",true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   /*xhr.onreadystatechange = function(){
@@ -79,16 +80,16 @@ function rem_member(val)
   //yesko satto short:*/
     xhr.onload = function(){
       if(this.responseText==1){
-        alert('success','Member removed!');
+        alert('success','Image removed!');
         get_carousel();
       }
       else{
-        alert('error','Member removal failed!');
+        alert('error','Image removal failed!');
       }
     
     }
 
-  xhr.send('rem_member='+val);
+  xhr.send('rem_image='+val);
 }
 
 //window load bayeC yo function call huna parYo

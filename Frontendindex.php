@@ -51,27 +51,21 @@
     <!-- Swiper -->
     <div class="swiper swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="images\Carousel(Slideshow)/1.png" class="w-100 d-block">
-        </div>
-        <div class="swiper-slide">
-          <img src="images\Carousel(Slideshow)/2.png" class="w-100 d-block">
-        </div>
-        <div class="swiper-slide">
-          <img src="images\Carousel(Slideshow)/3.png" class="w-100 d-block">
-        </div>
-        <div class="swiper-slide">
-          <img src="images\Carousel(Slideshow)/4.png" class="w-100 d-block">
-        </div>
-        <div class="swiper-slide">
-          <img src="images\Carousel(Slideshow)/7.png" class="w-100 d-block">
-        </div>
-        <div class="swiper-slide">
-          <img src="images\Carousel(Slideshow)/8.png" class="w-100 d-block">
-        </div>
-        <div class="swiper-slide">
-          <img src="images\Carousel(Slideshow)/9.png" class="w-100 d-block">
-        </div>
+        <?php
+        //dynamic banako xau
+      
+        $res = selectAll('carousel');
+        while($row = mysqli_fetch_assoc($res))
+        {
+          $path = CAROUSEL_IMG_PATH;
+          echo <<<data
+            $path$row[image]   
+            <div class="swiper-slide">
+             <img src="$path$row[image]" class="w-100 d-block">
+            </div> 
+          data;
+        }
+        ?>
       </div>
     </div>
   </div>

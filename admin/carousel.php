@@ -34,7 +34,7 @@ adminLogin(); //essentials file ma xa
               <i class="bi bi-plus-square"></i> Add
             </button>
           </div>
-          <div class="row" id="carousel-data">
+          <div class="row" id="carousel_data">
 
           </div>
         </div>
