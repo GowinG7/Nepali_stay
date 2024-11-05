@@ -25,6 +25,11 @@
     .container-fluid-footer {
       background-color: rgb(94, 139, 235);
     }
+    .custom-alert{ /*essentials.php ko alert wala*/
+  position: fixed;
+  top: 80px;   /*xoppya thiyo so ...(also for alert used in settings.php yesko alert() scripts.php ma xa*/
+  right: 25px;
+   }
   </style>
 </head>
 
