@@ -31,6 +31,44 @@
   right: 25px;
    }
   </style>
+
+<script>
+function validateForm() {
+    const name = document.forms["contactForm"]["name"].value;
+    const email = document.forms["contactForm"]["email"].value;
+    const subject = document.forms["contactForm"]["subject"].value;
+    const message = document.forms["contactForm"]["message"].value;
+
+    // Validate Name
+    const nameRegex = /^[A-Za-z]+( [A-Za-z]+)*$/;
+    if (!nameRegex.test(name)) {
+        alert("Name should only contain letters and spaces.");
+        return false;
+    }
+
+    // Validate Email
+    const emailRegex = /^[a-z0-9.]+@(gmail|yahoo|outlook)\.com$/;
+    if (!emailRegex.test(email)) {
+        alert("Email must be in lowercase and end with @gmail.com, @yahoo.com, or @outlook.com, containing only a-z, 0-9, and .");
+        return false;
+    }
+
+    // Validate Subject
+    if (subject.trim() === "") {
+        alert("Subject cannot be empty.");
+        return false;
+    }
+
+    // Validate Message
+    if (message.trim() === "") {
+        alert("Message cannot be empty.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
 </head>
 
 <body>
@@ -97,7 +135,7 @@
       <div class="col-lg-6 col-md-6 col-12 mb-5 px-4 ">
         <!-- Added w-100 to make it full width on small screens -->
         <div class="bg-white rounded shadow p-4">
-          <form method="POST">
+          <form  name="contactForm" method="POST" onsubmit="return validateForm()">
             <h5>Send a message</h5>
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Name</label>
