@@ -405,31 +405,32 @@
   <div class="container mb-4">
     <div class="row">
       <div class=" col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
-        <iframe class="w-100 rounded" height="320"
+        <iframe class="w-100 rounded" height="320px"
           src="<?php echo $contact_r['iframe'] ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="bg-white p-4 rounded mb-4">
           <h5>Call us</h5>
-          <a href="tel: +<?php echo $contact_r['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
-            <i class="bi bi-telephone-fill"></i> +<?php echo $contact_r['pn1'] ?> 
+          <a href="tel: +977-<?php echo $contact_r['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+            <i class="bi bi-telephone-fill"></i> +977-<?php echo $contact_r['pn1'] ?> 
             <!-- phone no. ko + thiyena uta so yeta + lekhna parya ..ajax ma kei special character haru send mildaina server ma teslai json ko through send grna prxa so-->
           </a>
           <br>
         <!-- yo phone number compulsory xaina so dina ni sakxan nadina pani so-->
          <?php
-          if($contact_r['pn2']!=''){
+          if(!empty($contact_r['pn2'])){
+           $pn2 = htmlspecialchars($contact_r['pn2']); //if data xa baney matra display natra null
            echo <<<data
-            <a href="tel: +$contact_r[pn2]" class="d-inline-block text-decoration-none text-dark">
-            <i class="bi bi-telephone-fill"></i> +$contact_r[pn2]
+            <a href="tel: +977-$contact_r[pn2]" class="d-inline-block text-decoration-none text-dark">
+             <i class="bi bi-telephone-fill"></i> +977-$contact_r[pn2]
             </a>
             data;
           }
          ?>
           
           <br><br>
-          <a href="mailto:godhulichulo1@gmail.com" class="d-inline-block mb-2 text-decoration-none text-dark">
-            <i class="bi bi-envelope-fill"></i> godhulichulo1@gmail.com
+          <a href="mailto:<?php echo $contact_r['email']?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+            <i class="bi bi-envelope-fill"></i> <?php echo $contact_r['email']?>
           </a>
         </div>
 

@@ -10,6 +10,8 @@ require_once "dbconfig.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
     <title>Registration Page</title>
+    
+
 </head>
 <body>
     <div class="container-fluid">
@@ -34,14 +36,15 @@ require_once "dbconfig.php";
                         
                         $errors = array();
                         
-                        // Validate Full Name
+                        // Modify Full Name Validation
                         if (!preg_match("/^[A-Za-z]+( [A-Za-z]+)*$/", $fullName)) {
-                            array_push($errors, "Full Name should not start with a space, should only contain letters, and only one space is allowed between words.");
-                        }
+                        array_push($errors, "Name should only contains letters, and space is allowed between words but not at the starting");
+                          }
+
 
                         // Validate Email
                         if (!preg_match("/^[a-zA-Z0-9.]+@(gmail|yahoo|outlook)\.com$/", $email)) {
-                            array_push($errors, "Email must contain only letters, numbers, periods, and end with @gmail.com, @yahoo.com, or @outlook.com.");
+                            array_push($errors, "Email must contains only letters, numbers, periods, and end with @gmail.com, @yahoo.com, or @outlook.com.");
                         }
 
                         // Validate Password

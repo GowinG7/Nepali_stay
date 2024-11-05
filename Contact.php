@@ -39,13 +39,11 @@
     </pre>
   </div>
 
-   
-    <?php
-    $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+  <?php
+    $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=? ";
     $values = [1];
-    //euta matra row fetch grnu xa tei vayerw yei  dynamic banauney kaam gariraxau
     $contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
-    ?>
+  ?>
 
   <div class="container">
     <div class="row">
@@ -56,24 +54,25 @@
           <iframe class="w-100 rounded" height="320px" src="<?php echo $contact_r['iframe']?>"></iframe>
           <h5>Address</h5>
           <a href="<?php echo $contact_r['gmap']?>" target="_blank" class="d-inline-block text-decoration-none text-dark mb-2">
-            <i class="bi bi-geo-alt-fill"></i> <?php echo $contact_r['address']?>
+            <i class="bi bi-geo-alt-fill"></i><?php echo $contact_r['address']?>
           </a>
 
           <h5 class="mt-4">Call us</h5>
           <a href="tel: +<?php echo $contact_r['pn1']?>" class="d-inline-block mb-2 text-decoration-none text-dark">
-            <i class="bi bi-telephone-fill"></i> +<?php echo $contact_r['pn1']?>
+            <i class="bi bi-telephone-fill"></i> +977-<?php echo $contact_r['pn1']?>
           </a>
           <br>
           <?php
-            if($contact_r['pn2']!=''){
-              echo <<<data
-                <a href="tel: +$contact_r[pn2]" class="d-inline-block mb-2 text-decoration-none text-dark">
-                  <i class="bi bi-telephone-fill"></i> +$contact_r[pn2]
-                </a>
+          if(!empty($contact_r['pn2'])){
+            $pn2 = htmlspecialchars($contact_r['pn2']);//if data xa baney matra
+            echo <<<data
+              <a href="tel: +<?php echo $contact_r[pn2]?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+               <i class="bi bi-telephone-fill"></i> +977-<?php echo $contact_r[pn2]?>
+              </a>
               data;
-            }
+          }
           ?>
-          <br>
+         
 
           <h5 class="mt-4">Email</h5>
           <a href="mailto: <?php echo $contact_r['email']?>" class="d-inline-block mb-2 text-decoration-none text-dark">
@@ -93,33 +92,49 @@
       <div class="col-lg-6 col-md-6 col-12 mb-5 px-4 ">
         <!-- Added w-100 to make it full width on small screens -->
         <div class="bg-white rounded shadow p-4">
-          <form action="">
+          <form method="POST">
             <h5>Send a message</h5>
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Name</label>
-              <input type="text" class="form-control shadow-none" required>
+              <input name="name" type="text" class="form-control shadow-none" required>
             </div>
 
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Email</label>
-              <input type="Email" class="form-control shadow-none" required>
+              <input name="email" type="Email" class="form-control shadow-none" required>
             </div>
 
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Subject</label>
-              <input type="text" class="form-control shadow-none" required>
+              <input name="subject" type="text" class="form-control shadow-none" required>
             </div>
 
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Message</label>
-              <textarea class="form-control shadow-none" rows="5" style="resize:none;"></textarea>
-              <button type="submit" class="btn text-white custom-bg mt-3">Send</button>
+              <textarea name="message" class="form-control shadow-none" rows="5" style="resize:none;"></textarea>
+              <button name="send" type="submit" class="btn text-white custom-bg mt-3">Send</button>
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  <?php
+   if(isset($_POST['send']))
+   {
+    $frm_data = filteration($_POST); //sr_no auto increment baxa rw primary key pani ho so query ma insert grna parena
+    $q = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES(?,?,?,?)";
+    $values = [$frm_data['name'], $frm_data['email'], $frm_data['subject'], $frm_data['message']];
+    $res = insert($q, $values, 'ssss');
+    if($res==1){
+      alert('success','Mail sent.'); // function banako xa admin ko essentails ma
+    }
+    else{
+      alert('error','Mail not sent.');
+    }
+   }
+  ?>
 
   <?php require('footer.php'); ?>
 </body>
