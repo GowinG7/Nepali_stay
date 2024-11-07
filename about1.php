@@ -65,7 +65,7 @@
           </div>
 
           <div class="col-lg-5 col-md-5 mb-4 order-lg-1 order-md-2 order-1">
-            <img src="images/about/about.jpg" class="w-100" height="450px" >
+            <img src="images/about/IMG_45370.jpg" class="w-100" height="450px" >
           </div>
         </div>
       </div>
