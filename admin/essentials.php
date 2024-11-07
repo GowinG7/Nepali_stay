@@ -4,12 +4,14 @@
 define('SITE_URL', 'http://127.0.0.1/nepali_stay/');
 define('ABOUT_IMG_PATH', SITE_URL . 'images/about/');
 define('CAROUSEL_IMG_PATH', SITE_URL . 'images/carousel/');
+define('FACILITIES_IMG_PATH', SITE_URL . 'images/facilities/');
 
 
 //backend uplaod process needs this data
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Nepali_stay/images/');
 define('ABOUT_FOLDER', 'about/');
 define('CAROUSEL_FOLDER', 'carousel/');
+define('FACILITES_FOLDER', 'facilities/');
 // Function to check if the user is logged in
 function adminLogin() {
     session_start();
@@ -105,5 +107,32 @@ function uploadUserImage($image) {
         }
     }
 }
+
+//for facility image upload
+function uploadSVGImage($image, $folder) {
+        $valid_mime = ['image/svg+xml'];
+        $img_mime = $image['type'];
+
+        if (!in_array($img_mime, $valid_mime)) {
+            return 'inv_img'; // Invalid image mime or format
+        } else if (($image['size'] / (1024 * 1024)) > 1) { // Check size
+            return 'inv_size'; // Invalid image size greater than 1mb
+        } else {
+            $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+            $rname = 'IMG_' . random_int(11111, 99999) . ".$ext"; // Generate random name
+            $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
+
+            // Ensure the target directory exists
+            if (!is_dir(UPLOAD_IMAGE_PATH . $folder)) {
+                mkdir(UPLOAD_IMAGE_PATH . $folder, 0755, true); // Create the directory if it doesn't exist
+            }
+
+            if (move_uploaded_file($image['tmp_name'], $img_path)) {
+                return $rname; // Image upload success
+            } else {
+                return 'upd_failed'; // Upload failed
+            }
+        }
+    }
 
 ?>

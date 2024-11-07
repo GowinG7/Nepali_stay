@@ -13,6 +13,11 @@
             </div>
         `;
         document.body.append(element);
+        setTimeout(remAlert,2000); //remove wala alert 2 sec(2000miliseconds) paxi dekhau ney
+    }
+    //tyo alert grda teha gayerw cross ma click nai grna parthiyo tara aba aafai hatxa
+    function remAlert(){
+      document.getElementsByClassName('alert')[0].remove();
     }
 
     </script>
