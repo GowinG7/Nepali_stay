@@ -67,19 +67,20 @@
             /*xhr.onreadystatechange = function(){
             if(this.readyState==4 && this.status==200){
             //yesko satto short:*/
-            xhr.onload = function(){
-            if(this.responseText==1){
-            alert('success','feature removed!');
-            get_features(); //feature remove bayeC feri call garinca get_features
-            }
-            else if(this.responseText == 'room_added'){
-                alert('error','Feature is added in the room');
-            }
-            else{
-            alert('error','Feature removal failed!');
-            }
+                xhr.onload = function () {
+                    var responseText = this.responseText.trim();  // Remove any leading/trailing whitespace
 
-            }
+                    if (responseText == 1) {
+                        alert('success', 'feature removed successfully!');
+                        get_features(); //feature remove bayeC feri call garinca get_features
+                    }
+                    else if(responseText == 'room_added'){
+                        alert('error', 'Feature is added in the room!');
+                    }
+                    else{
+                        alert('error', 'Feature removal failed!');
+                    } 
+                };
 
             xhr.send('rem_feature='+val);
             }
@@ -156,19 +157,20 @@
                 /*xhr.onreadystatechange = function(){
                 if(this.readyState==4 && this.status==200){
                 //yesko satto short:*/
-                xhr.onload = function(){
-                if(this.responseText==1){
-                alert('success','facility removed!');
-                get_facility(); //feature remove bayeC feri call garinca get_features
-                }
-                else if(this.responseText == 'room_added'){
-                alert('error','Feature is added in the room');
-                }
-                else{
-                alert('error','Facility removal failed!');
-                }
+                xhr.onload = function () {
+                    var responseText = this.responseText.trim();  // Remove any leading/trailing whitespace
 
-                }
+                    if (responseText == 1) {
+                        alert('success', 'facility removed!');
+                        get_facility(); //feature remove bayeC feri call garinca get_features
+                    }
+                    else if (responseText == 'room_added') {
+                        alert('error', 'Feature is added in the room');
+                    }
+                    else {
+                        alert('error', 'Facility removal failed!');
+                    }
+                };
 
                 xhr.send('rem_facility='+val);
             }

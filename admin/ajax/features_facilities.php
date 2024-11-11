@@ -42,11 +42,20 @@
     if(isset($_POST['rem_feature']))
     {
         $frm_data = filteration($_POST); //sirf 1 , 2 matra lekherw aaye ni filter grya xau
-        $values = [$frm_data['rem_feature']]; 
+        $values = [$frm_data['rem_feature']];
 
-        $q = "DELETE FROM `features` WHERE `id`=? ";
-        $res = delete($q,$values,'i');
-        echo $res;
+        $check_q = select('SELECT * FROM `room_features` WHERE `features_id`=?',[$frm_data['rem_feature']],'i');
+         
+        //yedi select garey paxi number of rows = 0 bayo rw yedi euta pani row yesto betiyo jasma features xaina baney teslai matlab tyo features lai matra delete grney
+        //kinaki yedi rooms ma features add xa baney tyo feature delete hunna
+        if(mysqli_num_rows($check_q)==0){
+            $q = "DELETE FROM `features` WHERE `id`=? ";
+            $res = delete($q,$values,'i');
+            echo $res ;
+        }
+        else{
+          echo 'room_added';//yesma room_added 
+        }      
     }
 
 
@@ -102,19 +111,25 @@
         $frm_data = filteration($_POST); //sirf 1 , 2 matra lekherw aaye ni filter grya xau
         $values = [$frm_data['rem_facility']]; 
 
+        $check_q = select('SELECT * FROM `room_facilities` WHERE `facilities_id`=?',[$frm_data['rem_facility']],'i');
+
+    if (mysqli_num_rows($check_q) == 0) {
         //data directly db bata delete grna sakdainau kinaki hmle image pani delete grna prney hunxa if image not delete - server ma load prxa  rw server ma space badhai janxa
         //so we fetched image data here
         $pre_q = "SELECT * FROM `facilities` WHERE `id`=?";
         $res = select($pre_q, $values, 'i');
         $img = mysqli_fetch_assoc($res);
 
-        if(deleteImage($img['icon'],FACILITES_FOLDER)){
+        if (deleteImage($img['icon'], FACILITES_FOLDER)) {
             $q = "DELETE FROM `facilities` WHERE `id`=? ";
-            $res = delete($q,$values,'i');
+            $res = delete($q, $values, 'i');
             echo $res;
+        } else {
+            echo 'error deleting image';
         }
+        } 
         else{
-            echo 0;
+            echo 'room_added';
         }
-    }
+    } 
 ?>
