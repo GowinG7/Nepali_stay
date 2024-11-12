@@ -89,7 +89,11 @@
             <td>$status</td>
             <td>
                 <button type='button' onclick='edit_details($row[id])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit-room'>
-                 <i class='bi bi-plus-square'></i> 
+                  <i class='bi bi-plus-square'></i> 
+                </button>
+
+                 <button type='button' onclick=\"room_images($row[id],'$row[name]')\" class='btn btn-info shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#room-images'>
+                  <i class='bi bi-images'></i> 
                 </button>
             </td>
             </tr>
@@ -212,6 +216,46 @@
     else{
         echo 0;
     }
+    }
+
+    if (isset($_POST['add_image'])) {
+        $frm_data = filteration($_POST);
+    
+        $img_r = uploadImage($_FILES['image'], ROOMS_FOLDER);
+    
+        if ($img_r == 'inv_img') {
+            echo $img_r;
+        } else if ($img_r == 'inv_size') {
+            echo $img_r;
+        } else if ($img_r == 'inv_failed') {
+            echo $img_r;
+        } else {
+            $q = "INSERT INTO `room_images`(`room_id`, `image`) VALUES (?,?)";
+            $values = [$frm_data['room_id'], $img_r];
+            $res = insert($q, $values, 'is');
+            echo $res;
+        }
+    }
+
+    if (isset($_POST['get_room_images'])) {
+        $frm_data = filteration($_POST);
+        $res = select("SELECT * FROM `room_images` WHERE `room_id` =?",[$frm_data['get_room_images']],'i');
+
+        $path = ROOMS_IMG_PATH;
+
+        while($row = mysqli_fetch_assoc($res))
+        {
+        echo <<<data
+            <tr class='align-middle'>
+              <td><img src='$path$row[image]' class='img-fluid'></td>
+              <td>thumb</td>
+              <td>
+                <button onclick='rem_image($row[sr_no],$row[room_id])' class='btn btn-danger btn-sm shadow-none'>
+                 <i class='bi bi-trash'></i>
+              </td>
+            </tr>
+        data;
+        }    
     }
 
     

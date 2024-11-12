@@ -3,18 +3,25 @@
 
 <script>
     //settings.php ma upd_general() function ma alert ko lagi used bayeko xa
-    function alert(type,msg){
+    function alert(type,msg,position='body'){ //type msg para compulsory third optional
         let bs_class = (type == 'success') ? 'alert-success' : 'alert-danger';
         let element = document.createElement('div');
         element.innerHTML = `
-            <div class="alert ${bs_class} alert-dismissible fade show custom-alert role="alert">
+            <div class="alert ${bs_class} alert-dismissible fade show" role="alert">
             <strong class="me-3">${msg}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
             </div>
         `;
-        document.body.append(element);
+          if(position=='body'){
+            document.body.append(element);
+            element.classList.add('custom-alert');
+          }
+          else{
+            document.getElementById(position).appendChild(element);
+          }
         setTimeout(remAlert,2000); //remove wala alert 2 sec(2000miliseconds) paxi dekhau ney
     }
+
     //tyo alert grda teha gayerw cross ma click nai grna parthiyo tara aba aafai hatxa
     function remAlert(){
       document.getElementsByClassName('alert')[0].remove();
