@@ -544,7 +544,7 @@ adminLogin(); //essentials file ma xa
       xhr.onload = function(){
         
         if(this.responseText == 1){
-          alert('success','Image added!','image-alert');
+          alert('success','Image removed successfully','image-alert');
           room_images(room_id,document.querySelector("#room-images .modal-title").innerText);  
    
         }
@@ -556,6 +556,66 @@ adminLogin(); //essentials file ma xa
       }
       xhr.send(data); //data is sent cause all the things(name,picture,add_image) are append in this variable
     }
+
+    function thumb_image(img_id,room_id)
+    {
+      //when uploading file through Ajax FormData() is used
+      let data = new FormData(); //FormData() always send data in multipart form and its RequestHeader is already set
+      data.append('image_id',img_id);
+      data.append('room_id',room_id);
+      data.append('thumb_image','');
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST","ajax/rooms.php",true);
+      //picture pathauda setRequestHeader chaidaina
+
+      /*xhr.onreadystatechange = function(){
+      if(this.readyState==4 && this.status==200){
+      //yesko satto short:*/
+      xhr.onload = function(){
+        
+        if(this.responseText == 1){
+          alert('success','Image Thumbnail Changed successfully','image-alert');
+          room_images(room_id,document.querySelector("#room-images .modal-title").innerText);  
+  
+        }
+        else{
+           alert('error','Image Thumbnail update  failed','image-alert');
+        }
+      }
+      xhr.send(data); //data is sent cause all the things(name,picture,add_image) are append in this variable
+    }
+
+    function remove_room(room_id)
+    {
+      if(confirm("Are you sure, you want to delete this room(along with room selected features and facilities will also be removed)?"))
+    {
+       //when uploading file through Ajax FormData() is used
+      let data = new FormData(); //FormData() always send data in multipart form and its RequestHeader is already set
+      data.append('room_id',room_id);
+      data.append('remove_room','');
+      let xhr = new XMLHttpRequest();
+        xhr.open("POST","ajax/rooms.php",true);
+        //picture pathauda setRequestHeader chaidaina
+
+        /*xhr.onreadystatechange = function(){
+        if(this.readyState==4 && this.status==200){
+        //yesko satto short:*/
+        xhr.onload = function(){
+          
+          if(this.responseText == 1){
+            alert('success','Room remove successfully');
+            get_all_rooms();
+          }
+          else{
+              alert('error','Room removal failed');
+          }
+        }
+        xhr.send(data); //data is sent cause all the things(name,picture,add_image) are append in this variable
+
+    }
+    
+          }
 
 
 
