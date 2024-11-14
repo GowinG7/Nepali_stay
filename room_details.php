@@ -2,41 +2,57 @@
 <html lang="en">
 
 <head>
-  <title>NEPALI STAY - ROOMS</title>
+  <title>NEPALI STAY - ROOM DETAILS</title>
 
   <?php require('links.php'); ?>
 
-  <style>
-    @media screen and (max-width: 575px) {
-      .availability-form {
-        margin-top: 25px;
-        padding: 0 35px;
+    <style>
+      @media screen and (max-width: 575px) {
+        .availability-form {
+          margin-top: 25px;
+          padding: 0 35px;
+        }
       }
-    }
 
-    body {
-      background-color: whitesmoke;
-    }
+      body {
+        background-color: whitesmoke;
+      }
 
-    .custom-navbar {
-      background-color: rgb(169, 134, 209);
-    }
+      .custom-navbar {
+        background-color: rgb(169, 134, 209);
+      }
 
-    .container-fluid-footer {
-      background-color: rgb(169, 134, 209);
-    }
-  </style>
+      .container-fluid-footer {
+        background-color: rgb(169, 134, 209);
+      }
+    </style>
 </head>
 
 <body>
   <?php require('header.php'); ?>
+  
+   <?php
+   if (!isset($_GET['id'])) {
+     redirect('rooms.php');
+    }
 
-  <div class="my-5 px-4">
-    <h2 class="fw-bold h-font text-center">OUR ROOMS</h2>
-    <div class="h-line" style="width: 150px; height: 1.6px; background-color: black; margin: 10px auto;"></div>
-  </div>
-  <div class="container-fluid">
+   $data = filteration($_GET);
+
+   $room_res = select("SELECT * FROM `rooms`  WHERE `id`=? AND `status`=? AND `removed`=?",[$data['id'],1,0],'iii');
+
+   if(mysqli_num_rows($room_res)==0){
+     redirect('rooms.php');
+   }
+
+   $room_data = mysqli_fetch_assoc($room_res);
+   ?>
+
+
+  <div class="container">
     <div class="row">
+      <div class="col-12 my-5 px-4">
+        <h2 class="fw-bold "><?php echo $room_data['name'] ?></h2>
+      </div>
       <!-- left side filter section in rooms page-->
       <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 ps-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow">
@@ -78,7 +94,7 @@
       <div class="col-lg-9 col-md-12 px-4">
 
         <?php
-        //rooms table bata status 1(active bako) ani removed ko value 0(admin panel bata remove nagaraiyeko if remove grya vaye 1 hunxa ) 
+        /*rooms table bata status 1(active bako) ani removed ko value 0(admin panel bata remove nagaraiyeko if remove grya vaye 1 hunxa ) 
         //:- remember - rooms table bata data hataiyeko xaina (tara room_features,room_facilities bata hataiyeko xa if deleted)admin panel m=ko room bata delte grda ni  :-
         $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=?",[1,0],'ii');
 
@@ -118,31 +134,31 @@
 
         //print room card
           echo <<<data
-            <div class="card mb-4 border-0 shadow">
-              <div class="row g-0 p-3 align-items-center">
-                <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
-                  <img src="$room_thumb" class="img-fluid rounded">
-                </div>
-                <div class="col-md-5 px-lg-3 px-md-3 px-0">
-                  <h5 class="mb-3">$room_data[name]</h5>
-                  <div class="features mb-3">
-                    <h6 class="mb-1">Features</h6>
-                    $features_data
+              <div class="card mb-4 border-0 shadow">
+                <div class="row g-0 p-3 align-items-center">
+                  <div class="col-md-5 mb-lg-0 mb-md-0 mb-3">
+                    <img src="$room_thumb" class="img-fluid rounded">
                   </div>
-                  <div class="facilities mb-3">
-                    <h6 class="mb-1">Facilities</h6>
-                    $facilities_data
+                  <div class="col-md-5 px-lg-3 px-md-3 px-0">
+                    <h5 class="mb-3">$room_data[name]</h5>
+                    <div class="features mb-3">
+                      <h6 class="mb-1">Features</h6>
+                      $features_data
+                    </div>
+                    <div class="facilities mb-3">
+                      <h6 class="mb-1">Facilities</h6>
+                      $facilities_data
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-2 text-center">
-                  <h6 class="mb-4">Rs.$room_data[price] per night</h6>
-                  <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Book Now</a>
-                  <a href="room_details.php?id=$room_data[id]" class="btn btn-sm w-100 btn-outline-dark shadow-none">More details</a>
+                  <div class="col-md-2 text-center">
+                    <h6 class="mb-4">Rs.$room_data[price] per night</h6>
+                    <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Book Now</a>
+                    <a href="room_details.php?id=$room_data[id]" class="btn btn-sm w-100 btn-outline-dark shadow-none">More details</a>
+                  </div>
                 </div>
               </div>
-            </div>
            data;
-        }
+        }*/
 
         ?>
 
