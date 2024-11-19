@@ -7,12 +7,20 @@ require('admin/essentials.php');
 session_start(); // This should be the first line in your PHP file.
 ?>
 
+<?php
+
+$settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
+$values = [1];
+$settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
+
+?>
+
 <!--Nav bar
 nav bar ko tag lai active dekhauna active tag ko used hunxa tara dynamically active dekhauna xa using js
   yeha nav bar ko id diyerw footer ma js ko code-->
 <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light custom-navbar px-lg-">
   <div class="container-fluid ">
-    <a class="navbar-brand me-5 fw-bold fs-3 h-font rounded shadow">NEPALI STAY <img src="images/Logo.jpg" alt="Logo" style="height:60px; width:60px;"></a>
+    <a class="navbar-brand me-5 fw-bold fs-3 h-font rounded shadow"><?php echo $settings_r['site_title']?> <img src="images/Logo.jpg" alt="Logo" style="height:60px; width:60px;"></a>
  
     <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

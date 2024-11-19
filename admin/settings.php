@@ -8,8 +8,8 @@ adminLogin(); //essentials file ma xa
 <html lang="en">
     <head>
         <title>Admin Panel - Settings</title>
-        <?php 
-        require('links.php')
+        <?php
+        require('links.php');
         ?>  
     </head>
     <body class="bg-light">
@@ -74,11 +74,10 @@ adminLogin(); //essentials file ma xa
           <h5 class="card-title m-0" >Shutdown Website</h5>
           <div class="form-check form-switch">
             <form >
-               <input onchange="upd_shutdown(this.value)" class="form-check-input" type="checkbox" id="shutdown-toggle">
-            </form>
-           
-          </div>
-          
+               <input onchange="upd_shutdown(this.value)" class="form-check-input" type="checkbox" id="shutdown-toggle" 
+               >
+            </form>          
+          </div>          
         </div>
         <p class="card-text" >
           No customers will be allowed to book hotel room, when shutdown mode is turned on.
