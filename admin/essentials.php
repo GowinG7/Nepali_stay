@@ -9,7 +9,7 @@ define('ROOMS_IMG_PATH', SITE_URL . 'images/rooms/');
 
 
 //backend uplaod process needs this data
-define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Nepali_stay/images/');
+define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/nepali_stay/images/');
 define('ABOUT_FOLDER', 'about/');
 define('CAROUSEL_FOLDER', 'carousel/');
 define('FACILITES_FOLDER', 'facilities/');

@@ -12,7 +12,7 @@ nav bar ko tag lai active dekhauna active tag ko used hunxa tara dynamically act
   yeha nav bar ko id diyerw footer ma js ko code-->
 <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light custom-navbar px-lg-">
   <div class="container-fluid ">
-    <a class="navbar-brand me-5 fw-bold fs-3 h-font rounded shadow" href="index.php">NEPALI STAY <img src="images/Logo.jpg" alt="Logo" style="height:60px; width:60px;"></a>
+    <a class="navbar-brand me-5 fw-bold fs-3 h-font rounded shadow">NEPALI STAY <img src="images/Logo.jpg" alt="Logo" style="height:60px; width:60px;"></a>
  
     <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

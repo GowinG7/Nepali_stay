@@ -59,7 +59,6 @@
         {
           $path = CAROUSEL_IMG_PATH;
           echo <<<data
-            $path$row[image]   
             <div class="swiper-slide">
              <img src="$path$row[image]" class="w-100 d-block">
             </div> 
@@ -116,178 +115,88 @@
   <!--Rooms card-->
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6 my-3">
-        <div class="card border-0 shadow" style="max-width:350px; margin: auto;">
-          <img src="images/Rooms/1.png" class="card-img-top">
-          <div class="card-body">
-            <h5>Simple Room Name</h5>
-            <h6 class="mb-4">Rs.200 per night</h6>
-            <div class="features mb-4">
-              <h6 class="mb-1">Features</h6>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                2 Rooms
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                1 Bathroom
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                1 Balcony
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                3 sofa
-              </span>
-            </div>
-            <div class="facilities mb-4">
-              <h6 class="mb-1">Features</h6>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                WiFi
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                Television
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                AC
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                Room heater
-              </span>
-            </div>
 
-            <div class="rating mb-4">
-              <h6 class="mb-1">Rating</h6>
-              <span class="badge rounded-pill bg-light">
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-              </span>
+       <?php
+          //rooms table bata status 1(active bako) ani removed ko value 0(admin panel bata remove nagaraiyeko if remove grya vaye 1 hunxa ) 
+          //:- remember - rooms table bata data hataiyeko xaina (tara room_features,room_facilities bata hataiyeko xa if deleted)admin panel m=ko room bata delte grda ni  :-
+          $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=?  ORDER BY `id` DESC LIMIT 3" ,[1,0],'ii');
 
-            </div>
-            <div class="d-flex justify-content-evenly mb-2">
-              <!-- Updated background color for visibility -->
-              <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book now</a>
-              <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More details</a>
-            </div>
+          while ($room_data = mysqli_fetch_assoc($room_res)) {
+            //get features of room
+            $fea_q = mysqli_query($con, "SELECT f.name FROM `features` f 
+                    INNER JOIN `room_features` rfea ON f.id = rfea.features_id 
+                    WHERE rfea.room_id = '$room_data[id]'");
 
-          </div>
-        </div>
-      </div>
+            $features_data = "";
+            while ($fea_row = mysqli_fetch_assoc($fea_q)) {
+              $features_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
+                    $fea_row[name]
+                  </span>";
+            }
+            //get facilities of room
+            $fac_q = mysqli_query($con, "SELECT f.name FROM `facilities` f
+            INNER JOIN `room_facilities` rfac ON f.id = rfac.facilities_id
+            WHERE rfac.room_id = '$room_data[id]'");
 
+            $facilities_data = "";
+            while ($fac_row = mysqli_fetch_assoc($fac_q)) {
+              $facilities_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>
+              $fac_row[name]
+              </span>";
+            }
+            //get thumbnail of image
+              $room_thumb = ROOMS_IMG_PATH . "thumbnail.jpg";
+              $thumb_q = mysqli_query($con, "SELECT * FROM `room_images` 
+                WHERE `room_id`='$room_data[id]'
+                AND `thumb`='1'");
 
-      <!--Rooms card-->
-      <div class="col-lg-4 col-md-6 my-3">
-        <div class="card border-0 shadow" style="max-width:350px; margin: auto;">
-          <img src="images/Rooms/1.png" class="card-img-top">
-          <div class="card-body">
-            <h5>Simple Room Name</h5>
-            <h6 class="mb-4">Rs.200 per night</h6>
-            <div class="features mb-4">
-              <h6 class="mb-1">Features</h6>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                2 Rooms
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                1 Bathroom
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                1 Balcony
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                3 sofa
-              </span>
-            </div>
-            <div class="facilities mb-4">
-              <h6 class="mb-1">Features</h6>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                WiFi
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                Television
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                AC
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                Room heater
-              </span>
+              if (mysqli_num_rows($thumb_q) > 0) {
+                $thumb_res = mysqli_fetch_assoc($thumb_q);
+                $room_thumb = ROOMS_IMG_PATH . $thumb_res['image'];
+              }
 
-            </div>
-            <div class="rating mb-4">
-              <h6 class="mb-1">Rating</h6>
-              <span class="badge rounded-pill bg-light">
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-              </span>
-            </div>
-            <div class="d-flex justify-content-evenly mb-2">
-              <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book now</a>
-              <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More details</a>
-            </div>
-          </div>
-        </div>
-      </div>
+          //print room card
+              echo <<<data
+                <div class="col-lg-4 col-md-6 my-3">
+                  <div class="card border-0 shadow" style="max-width:350px; margin: auto;">
+                    <img src="$room_thumb" class="card-img-top">
+                    <div class="card-body">
+                      <h5>Simple $room_data[name]</h5>
+                      <h6 class="mb-4">Rs.$room_data[price]</h6>
+                      <div class="features mb-4">
+                      <h6 class="mb-1">Features</h6>
+                       $features_data
+                    </div>
+                      <div class="facilities mb-4">
+                        <h6 class="mb-1">Features</h6>
+                        $facilities_data
+                      </div>
 
-      <!--Rooms card-->
-      <div class="col-lg-4 col-md-6 my-3">
-        <div class="card border-0 shadow" style="max-width:350px; margin: auto;">
-          <img src="images/Rooms/1.png" class="card-img-top">
-          <div class="card-body">
-            <h5>Simple Room Name</h5>
-            <h6 class="mb-4">Rs.200 per night</h6>
-            <div class="features mb-4">
-              <h6 class="mb-1">Features</h6>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                2 Rooms
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                1 Bathroom
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                1 Balcony
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                3 sofa
-              </span>
-            </div>
-            <div class="facilities mb-4">
-              <h6 class="mb-1">Features</h6>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                WiFi
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                Television
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                AC
-              </span>
-              <span class="badge bg-light text-dark text-wrap lh-base">
-                Room heater
-              </span>
+                      <div class="rating mb-4">
+                        <h6 class="mb-1">Rating</h6>
+                        <span class="badge rounded-pill bg-light">
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                          <i class="bi bi-star-fill text-warning"></i>
+                        </span>
+                      </div>
+                      <div class="d-flex justify-content-evenly mb-2">
+                        <!-- Updated background color for visibility -->
+                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book now</a>
+                        <a href="room_details.php?id=$room_data[id]" class="btn btn-sm btn-outline-dark shadow-none">More details</a>
+                      </div>
 
-            </div>
-            <div class="rating mb-4">
-              <h6 class="mb-1">Rating</h6>
-              <span class="badge rounded-pill bg-light">
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-              </span>
-            </div>
-            <div class="d-flex justify-content-evenly mb-2">
-              <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book now </a>
-              <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More details</a>
-            </div>
-          </div>
-        </div>
-      </div>
+                    </div>
+                  </div>
+                </div>
+            data;
+          }
 
-
+        ?>
 
       <div class="col-lg-12 text-center mt-5">
-        <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms >>></a>
+        <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms >>></a>
       </div>
 
     </div>
@@ -297,29 +206,23 @@
   <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">OUR FACILITIES</h2>
   <div class="container">
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
+     <!--Dynamically fetch garayeka xau-->
+     <?php
+     $res = mysqli_query($con, "SELECT * FROM `facilities` ORDER BY `id` DESC LIMIT 5");
+      $path = FACILITIES_IMG_PATH;
 
-      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="images/Facilities/wifi.jpg" width="80px">
-        <h5 class="mt-3">WiFi</h5>
-      </div>
-      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="images/Facilities/wifi.jpg" width="80px">
-        <h5 class="mt-3">WiFi</h5>
-      </div>
-      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="images/Facilities/wifi.jpg" width="80px">
-        <h5 class="mt-3">WiFi</h5>
-      </div>
-      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="images/Facilities/wifi.jpg" width="80px">
-        <h5 class="mt-3">WiFi</h5>
-      </div>
-      <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-        <img src="images/Facilities/wifi.jpg" width="80px">
-        <h5 class="mt-3">WiFi</h5>
-      </div>
-      <div class="col-lg-12 text-center mt-5">
-        <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facilities</a></a>
+      while ($row = mysqli_fetch_assoc($res)) {
+        echo <<<data
+          <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+            <img src="$path$row[icon]" width="40px">
+            <h5 class="mt-3 ">$row[name]</h5>
+          </div>
+         data;
+      }
+      ?>
+
+      <div class="col-lg-12 text-center mt-1">
+        <a href="facilities.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facilities</a></a>
 
       </div>
     </div>
@@ -327,7 +230,7 @@
 
   <!--Testimonials :testimonial refers to a written statement or review provided by a guest or customer about 
   their experience with a particular hotel-->
-  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Review and Feedbacks</h2>
+  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">TESTIMONIALS</h2>
   <div class="container mt-5">
     <!-- Swiper -->
     <div class="swiper swiper-testimonials">
@@ -381,13 +284,11 @@
           </div>
         </div>
 
-
-
       </div>
       <div class="swiper-pagination"></div>
     </div>
     <div class="col-lg-12 text-center mt-5">
-      <a href="#" class="btn btn-sm btn-outline-dark rounded- fw-bold shadow-none">Know More</a>
+      <a href="about1.php" class="btn btn-sm btn-outline-dark rounded- fw-bold shadow-none">Know More</a>
     </div>
   </div>
 
