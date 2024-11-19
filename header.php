@@ -11,6 +11,16 @@ session_start(); // This should be the first line in your PHP file.
 $settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
 $values = [1];
 $settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
+
+if($settings_r['shutdown']==1){
+  echo <<<alertbar
+    <div class='bg-danger text-center p-2 fw-bold'>
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      Bookings are temporarily Closed!
+    <div>
+  alertbar;
+
+}
 ?>
 
 <!--Nav bar

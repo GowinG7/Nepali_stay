@@ -25,14 +25,18 @@ $settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
             <a class="nav-link text-white" href="dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
+            <a class="nav-link text-white" href="users.php">Users</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-white" href="user_queries.php">User Queries</a>
+            </li>            
+            <li class="nav-item">
             <a class="nav-link text-white" href="rooms.php">Rooms</a>
             </li>
             <li class="nav-item">
             <a class="nav-link text-white" href="features_facilities.php">Features and Facilities</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link text-white" href="user_queries.php">User Queries</a>
-            </li>
+        
             <li class="nav-item">
             <a class="nav-link text-white" href="carousel.php">Carousel</a>
             </li>
