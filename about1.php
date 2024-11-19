@@ -46,10 +46,12 @@
     <h2 class="fw-bold h-font text-center">ABOUT US</h2>
     <div class="h-line bg-dark"></div>
     <p class="text-center mt-3">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-       Excepturi commodi voluptate recusandae nam magnam aperiam 
-       consequuntur, officia cumque. Dignissimos deserunt harum expedita error animi cupiditate corrupti, culpa deleniti tempore sint.
-    </p>
+
+      <?php
+      $about_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
+      $about_r = mysqli_fetch_assoc(select($about_q,$values,'i'));
+      ?>
+      <?php echo $about_r['site_about'] ?>   </p>
   </div>
 
     <div class="container">

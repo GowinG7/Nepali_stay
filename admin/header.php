@@ -1,8 +1,13 @@
 
-
+<?php
+require_once('db_config.php');
+$settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
+$values = [1];
+$settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
+?>
 
 <div  class="container-fluid bg-dark text-light p-3 d-flex align-items-center justify-content-between sticky-top">
-    <h3 class="mb-0 h-font"><u>Online Hotel Booking Site</u></h3>
+    <h3 class="mb-0 h-font"><u><?php echo $settings_r['site_title']?></u></h3>
     <a href="logout.php" class="btn btn-light btn-sm">Log Out</a>
     </div>
     <div id="dashboard-menu" class="col-lg-2 bg-dark border-top border-3 border-secondary" >

@@ -34,16 +34,16 @@
   </h6>
 </div>
 -->
-
+<?php
+$about_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
+$about_r = mysqli_fetch_assoc(select($about_q,$values,'i'));
+?>
 
 <div class="container-fluid-footer ">
   <div class="row">
     <div class="col-lg-4 col-md-6 p-4">
-      <h3 class="h-font fw-bold fs-3 ">Nepali Stay</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Tenetur nulla saepe perspiciatis porro dolorum recusandae quas? 
-        Consectetur dicta delectus nulla! Nihil perspiciatis dolores enim dolorem natus tempore debitis facere assumenda.
-      </p>
+      <h3 class="h-font fw-bold fs-3 "><?php echo $settings_r['site_title']?></h3>
+      <p><?php echo $about_r['site_about']?>  </p>
     </div>
     <div class="col-lg-4 col-md-6 p-4">
       <h5 class="mb-3" >Links</h5>
