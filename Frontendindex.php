@@ -166,7 +166,7 @@
                   <div class="card border-0 shadow" style="max-width:350px; margin: auto;">
                     <img src="$room_thumb" class="card-img-top">
                     <div class="card-body">
-                      <h5>Simple $room_data[name]</h5>
+                      <h5> $room_data[name]</h5>
                       <h6 class="mb-4">Rs.$room_data[price]</h6>
                       <div class="features mb-4">
                       <h6 class="mb-1">Features</h6>
