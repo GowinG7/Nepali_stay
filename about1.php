@@ -57,13 +57,10 @@
     <div class="container">
       <div class="row justify-content-between align-items-center">
         <div class="col-lg-6 col-md-5 mb-4 order-lg-1 order-md-1 order-2">
-          <h3 class="mb-3">Lorem ipsum dolor sit amet.</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Beatae officia delectus commodi consequatur facilis animi 
-            veniam! Lorem, ipsum dolor sit amet consectetur adipisicing 
-            elit. Est, possimus!
-          </p>
+          <h3 class="mb-3">Have a look about our team and about this System - </h3>
+          <h2>
+            | Nepali Stay |
+          </2>
           </div>
 
           <div class="col-lg-5 col-md-5 mb-4 order-lg-1 order-md-2 order-1">
