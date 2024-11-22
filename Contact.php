@@ -107,14 +107,14 @@ function validateForm() {
           <br>
           <?php
           if(!empty($contact_r['pn2'])){
-            $pn2 = htmlspecialchars($contact_r['pn2']);//if data xa baney matra
-            echo <<<data
-              <a href="tel: +<?php echo $contact_r[pn2]?>" class="d-inline-block mb-2 text-decoration-none text-dark">
-               <i class="bi bi-telephone-fill"></i> +977-<?php echo $contact_r[pn2]?>
-              </a>
-              data;
+           $pn2 = htmlspecialchars($contact_r['pn2']); //if data xa baney matra display natra null
+           echo <<<data
+            <a href="tel: +977-$contact_r[pn2]" class="d-inline-block text-decoration-none text-dark">
+             <i class="bi bi-telephone-fill"></i> +977-$contact_r[pn2]
+            </a>
+            data;
           }
-          ?>
+         ?>
          
 
           <h5 class="mt-4">Email</h5>

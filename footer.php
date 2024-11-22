@@ -47,7 +47,7 @@ $about_r = mysqli_fetch_assoc(select($about_q,$values,'i'));
     </div>
     <div class="col-lg-4 col-md-6 p-4">
       <h5 class="mb-3" >Links</h5>
-      <a href="Frontendindex.php" class="d-inline-block mb-1 text-dark text-decoration-none">Home</a><br>
+      <a href="userdashboard.php" class="d-inline-block mb-1 text-dark text-decoration-none">Home</a><br>
       <a href="Rooms.php" class="d-inline-block mb-1 text-dark text-decoration-none">Rooms</a><br>
       <a href="facilities.php" class="d-inline-block mb-1 text-dark text-decoration-none">Facilities</a><br>
       <a href="Contact.php" class="d-inline-block mb-1 text-dark text-decoration-none">Contact Us</a><br>

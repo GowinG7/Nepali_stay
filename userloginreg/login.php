@@ -63,7 +63,7 @@ require_once "dbconfig.php"; // Make sure to include the database connection
                                     // Compare the hashed password
                                     if (password_verify($password, $user["password"])) {
                                         $_SESSION["user"] = "yes";
-                                        header("Location: ../Frontendindex.php"); //success bayeC kata direct grney
+                                        header("Location: ../userdashboard.php"); //success bayeC kata direct grney
                                         exit();
                                     } else {
                                         $errorMessage = "Password does not match.";

@@ -68,7 +68,7 @@
       <div class="col-12 my-5 mb-4 px-4">
         <h2 class="fw-bold "><?php echo $room_data['name'] ?></h2>
         <div style="font-size: 18px;">
-          <a href="frontendindex.php" class="breadcrumb-link">HOME</a>
+          <a href="userdashboard.php" class="breadcrumb-link">HOME</a>
           <span class="text-secondary"> > </span>
           <a href="rooms.php" class="breadcrumb-link">ROOMS</a>
         </div>
