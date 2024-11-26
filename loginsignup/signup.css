@@ -27,6 +27,7 @@ h1 {
 
 .form-group label {
     font-size: 14px;
+    font-weight: 500;
     color: #333;
     display: block;
     margin-bottom: 5px;
@@ -63,11 +64,12 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .btn-submit:hover {
-    background-color: #45a049;
+    background-color: #056b0a;
+   
 }
 
 /* Footer Styling */
@@ -82,7 +84,8 @@ h1 {
 }
 
 .form-footer a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: purple;
 }
 
 /* Alert Styles for Success and Error */
@@ -130,4 +133,37 @@ h1 {
     display: none;            /* Initially hidden, shown when validation fails */
     line-height: 1.2;         /* Ensure the text doesn't take up too much space */
     word-wrap: break-word;    /* Prevent long words from breaking the layout */
+}
+
+/* Basic styling for placeholders */
+.form-group input::placeholder {
+    color: #aaa; /* Lighter color for placeholder text */
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px; /* Slightly smaller font size */
+    opacity: 1; /* Full opacity to ensure visibility */
+}
+
+/* Adjust placeholder on focus */
+.form-group input:focus::placeholder {
+    color: #bbb; /* Slightly darker color for focused input */
+    font-style: normal; /* Remove italics for focus */
+    opacity: 0.6; /* Lower opacity to reduce prominence */
+}
+
+/* Adjust the input fields for clear distinction */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #333; /* Ensure input text is clearly visible */
+}
+
+/* Add focus effect to inputs */
+.form-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    background-color: #f9fff9; /* Light background to enhance contrast */
 }
