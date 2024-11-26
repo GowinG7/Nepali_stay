@@ -1,0 +1,133 @@
+/* Basic styling for the form */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Ensure error messages are styled */
+.form-group .error-message {
+    color: red;               /* Error message text color */
+    font-size: 12px;          /* Smaller font size for error message */
+    margin-top: 5px;          /* Space between input field and error message */
+    display: none;            /* Initially hidden, shown when validation fails */
+}
+
+/* Button styling */
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+/* Footer Styling */
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Alert Styles for Success and Error */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert h4 {
+    margin: 0;
+}
+
+/* Add some responsiveness */
+@media screen and (max-width: 480px) {
+    .form-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .form-group input {
+        padding: 8px;
+    }
+
+    .btn-submit {
+        padding: 12px;
+    }
+}
+/* Styling for error messages */
+.error-message {
+    color: red;               /* Ensure the text color is red */
+    font-size: 12px;          /* Smaller font size for error message */
+    margin-top: 5px;          /* Space between input field and error message */
+    display: none;            /* Initially hidden, shown when validation fails */
+    line-height: 1.2;         /* Ensure the text doesn't take up too much space */
+    word-wrap: break-word;    /* Prevent long words from breaking the layout */
+}

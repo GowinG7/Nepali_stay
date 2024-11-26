@@ -35,7 +35,7 @@ $settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
                 <h3>Welcome To Nepal</h3>
                 <h1>Come and visit |<span class="change_content">  </span> | </h1>
                 <p>"Choosing <b><?php echo $settings_r['site_title'] ?> <i>once</i></b> is not enough"</p>
-                <a href="userloginreg/login.php" class="button1">User Login</a> <!-- yeha pailai login.php ma redirected grya xa so paxi session ma pardena raixa khaali xdney -->
+                <a href="loginsignup/login.php" class="button1">User Login</a> <!-- yeha pailai login.php ma redirected grya xa so paxi session ma pardena raixa khaali xdney -->
                 <a href="admin/index.php" class="button2">Admin Login</a>
             </section>
         </main>

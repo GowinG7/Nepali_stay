@@ -1,0 +1,121 @@
+
+:root {
+    --teal: rgb(15, 140, 189);
+    --teal_hover: #2bbb6c;
+    --light-bg: #f8f9fa;
+    --dark-bg: #343a40;
+    --text-light: white;
+    --border-color: #ced4da;
+    --gray-text: #606770;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--light-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form {
+    width: 350px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-form h4 {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    padding: 15px;
+    margin: -25px -25px 20px -25px;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--teal);
+    outline: none;
+    box-shadow: 0 0 8px rgba(15, 140, 189, 0.3);
+    background-color: white;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-light);
+    background-color: var(--teal);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--teal_hover);
+    transform: scale(1.03);
+}
+
+.footer {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--gray-text);
+}
+
+.footer a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: none;
+    color: purple;
+}
+
+.footer hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 15px 0;
+}
+
+@media (max-width: 480px) {
+    .login-form {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .login-form h4 {
+        font-size: 20px;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 15px;
+    }
+}
