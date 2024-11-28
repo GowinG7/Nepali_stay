@@ -193,8 +193,8 @@ if (isset($_POST["submit"])) {
 
             $('#email').on('blur', function () {
                 var email = $(this).val();
-                if (!/^[a-zA-Z0-9.]+@(gmail|yahoo|outlook)\.com$/.test(email)) {
-                    $('#email_error').text('Email must end with @gmail.com, @yahoo.com, or @outlook.com.').show();
+                if (!/^[a-z0-9.]+@(gmail|yahoo|outlook)\.com$/.test(email)) {
+                    $('#email_error').text('Email must contains only letters(a-z),numbers(0-9)and periods or dot(.) and email must end with @gmail.com, @yahoo.com, or @outlook.com.').show();
                 } else {
                     $('#email_error').hide();
                 }

@@ -103,16 +103,9 @@ color: black;
 }
 .button1:hover{
     background-color:orange;
-    Color: black;
+    Color: white;
 }
-section .button2{
-    background: skyblue;
-    color:black;
-}
-.button2:hover{
-    background:yellow;
-    color:blue;
-}
+
 .change_content:after{
     content:'';
     animation: changetext 40s infinite linear;

@@ -67,7 +67,7 @@ body {
     font-size: 16px;
     font-weight: bold;
     color: var(--text-light);
-    background-color: var(--teal);
+    background-color: rgb(9, 119, 104);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -75,7 +75,8 @@ body {
 }
 
 .btn:hover {
-    background-color: var(--teal_hover);
+    background-color: rgb(15, 105, 141);
+    color:var(--text-light);
     transform: scale(1.03);
 }
 
@@ -99,7 +100,7 @@ body {
 
 .footer hr {
     border: none;
-    height: 1px;
+    height: px;
     background: #ddd;
     margin: 15px 0;
 }
@@ -118,4 +119,9 @@ body {
         padding: 10px;
         font-size: 15px;
     }
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
 }

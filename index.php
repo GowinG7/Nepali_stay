@@ -22,7 +22,7 @@ $settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
         <nav>
             <div class="logo">  
                 <h3 class="logo-txt">
-                    <img src="userloginreg/Logo.jpg" alt="Logo" class="logo-img"> <?php echo $settings_r['site_title'] ?>
+                    <img src="images/Logo.jpg" alt="Logo" class="logo-img"> <?php echo $settings_r['site_title'] ?>
                 </h3> 
             </div>
             <div class="menu">
@@ -36,7 +36,6 @@ $settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
                 <h1>Come and visit |<span class="change_content">  </span> | </h1>
                 <p>"Choosing <b><?php echo $settings_r['site_title'] ?> <i>once</i></b> is not enough"</p>
                 <a href="loginsignup/login.php" class="button1">User Login</a> <!-- yeha pailai login.php ma redirected grya xa so paxi session ma pardena raixa khaali xdney -->
-                <a href="admin/index.php" class="button2">Admin Login</a>
             </section>
         </main>
    </header>
