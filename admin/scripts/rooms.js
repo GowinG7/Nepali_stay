@@ -196,7 +196,8 @@
     //yesko satto short:*/
     xhr.onload = function(){
         if(this.responseText == 1){
-        alert('success','Status toggled');
+            alert('success', 'Status toggled');
+            get_all_rooms();
         }
         else{
         alert('success','Status toggled failed');
