@@ -43,6 +43,30 @@
     xhr.send('toggle_status='+id+'&value='+val);
     }
 
+    //users ma verified grna 
+    //yeha bata ajax ko users.php ma request janxa
+    function toggle_verify(id,val)
+    {
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST","ajax/users.php",true);
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+
+        /*xhr.onreadystatechange = function(){
+        if(this.readyState==4 && this.status==200){
+        //yesko satto short:*/
+        xhr.onload = function(){
+            if(this.responseText == 1){
+                alert('success', 'User become Verified');
+                get_users();
+            }
+            else{
+            alert('success','verified failed');
+            }
+        }
+        xhr.send('toggle_verify='+id+'&value='+val);
+    }
     
     function remove_user(user_id)
     {
