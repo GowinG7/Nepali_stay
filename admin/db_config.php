@@ -7,7 +7,6 @@
       dynamic queries, data filters sabb wala code hunxa */
 
 
-
 $hname = 'localhost';
 $uname = 'root'; //root username ko pass blank hunxa
 $pass = '';
@@ -52,25 +51,33 @@ function filteration($data)
     return $res;
      }
 
-    function select($sql,$values,$datatypes){
-        $con = $GLOBALS['con'];// $con variable function ko baira xa so yesma used grna mildaina tesaile $GLOBALS use garerw con variable fetch grya xau
-        if($stmt= mysqli_prepare($con,$sql))
-        {
-        mysqli_stmt_bind_param($stmt, $datatypes, ...$values); //... splat operator dynamically bind_param ma value pass grna used hunxa (yeha duita xa paxi yo bnda badi ni value huna sakxa so)
-        if(mysqli_stmt_execute($stmt)){
-        $res =  mysqli_stmt_get_result($stmt);
-        mysqli_stmt_close($stmt);
-        return $res; //uta select function gareko ma return grya result(index.php ma xa)
+     function select($sql, $values, $datatypes) {
+        $con = $GLOBALS['con']; // Access the global connection variable
+        
+        // Ensure the number of data types matches the number of values passed
+        if (strlen($datatypes) !== count($values)) {
+            die("Mismatch between data types and number of values");
         }
-        else{
-        mysqli_stmt_close($stmt);
-        die("Query cannot be executed - Select"); //k ma problem aako: yeha Select function dhekhako xau matlab select wala query prepare vaxaina
+    
+        if ($stmt = mysqli_prepare($con, $sql)) {
+            // Dynamically bind parameters
+            if ($values) { // Bind only if there are values
+                mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+            }
+            
+            if (mysqli_stmt_execute($stmt)) {
+                $res = mysqli_stmt_get_result($stmt);
+                mysqli_stmt_close($stmt);
+                return $res; // Return the result set
+            } else {
+                mysqli_stmt_close($stmt);
+                die("Query cannot be executed - Select");
+            }
+        } else {
+            die("Query cannot be prepared - Select");
         }
-        } 
-        else{
-        die("Query cannot prepared -Select");
-        }
-        }
+    }
+     
 
          //settings_crud ma used vaxa
         function update($sql,$values,$datatypes)
@@ -138,4 +145,3 @@ function filteration($data)
 
 
 ?>
-

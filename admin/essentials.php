@@ -81,7 +81,7 @@ function deleteImage($image, $folder) {
     }
 }
 
-// Function to upload user images
+/* Function to upload user images
 function uploadUserImage($image) {
     $valid_mime = ['image/jpeg', 'image/png', 'image/webp'];
     $img_mime = $image['type'];
@@ -109,33 +109,34 @@ function uploadUserImage($image) {
             return 'upd_failed'; // Upload failed
         }
     }
-}
+} */
 
-//for facility image upload
-function uploadSVGImage($image, $folder) {
+
+      //for facility image upload
+      function uploadSVGImage($image, $folder) {
         $valid_mime = ['image/svg+xml'];
         $img_mime = $image['type'];
 
         if (!in_array($img_mime, $valid_mime)) {
-            return 'inv_img'; // Invalid image mime or format
+        return 'inv_img'; // Invalid image mime or format
         } else if (($image['size'] / (1024 * 1024)) > 1) { // Check size
-            return 'inv_size'; // Invalid image size greater than 1mb
+        return 'inv_size'; // Invalid image size greater than 1mb
         } else {
-            $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
-            $rname = 'IMG_' . random_int(11111, 99999) . ".$ext"; // Generate random name
-            $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG_' . random_int(11111, 99999) . ".$ext"; // Generate random name
+        $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
 
-            // Ensure the target directory exists
-            if (!is_dir(UPLOAD_IMAGE_PATH . $folder)) {
-                mkdir(UPLOAD_IMAGE_PATH . $folder, 0755, true); // Create the directory if it doesn't exist
-            }
-
-            if (move_uploaded_file($image['tmp_name'], $img_path)) {
-                return $rname; // Image upload success
-            } else {
-                return 'upd_failed'; // Upload failed
-            }
+        // Ensure the target directory exists
+        if (!is_dir(UPLOAD_IMAGE_PATH . $folder)) {
+            mkdir(UPLOAD_IMAGE_PATH . $folder, 0755, true); // Create the directory if it doesn't exist
         }
-    }
+
+        if (move_uploaded_file($image['tmp_name'], $img_path)) {
+            return $rname; // Image upload success
+        } else {
+            return 'upd_failed'; // Upload failed
+        }
+        }
+      }
 
 ?>
