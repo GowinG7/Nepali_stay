@@ -3,9 +3,6 @@ require('admin/db_config.php');
 require('admin/essentials.php');
 ?>
 
-<?php
-session_start(); // This should be the first line in your PHP file.
-?>
 
 <?php
 $settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";

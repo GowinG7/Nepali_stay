@@ -1,3 +1,27 @@
+<?php
+session_start(); // Start the session
+
+require('config.php');
+//Ensure `user_id` is set in the session
+if (isset($_SESSION["user_id"])) {
+    $user_id = $_SESSION["user_id"];
+    
+    // Fetch the name from the `user_creden` table
+    $query = "SELECT name FROM user_creden WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($name);
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+} else {
+    // Redirect to login page if session is not set
+    header("Location: ../loginsignup/login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,16 +59,42 @@
       .container-fluid-footer{
         background-color: rgb(78, 171, 207);
       }
+
+    .dashboard-container {
+    color: green; /* Text color */
+    position: absolute; /* Allows precise positioning */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    background-color: #f0f9f0; /* Optional: Light green background */
+    padding: 10px; /* Optional: Padding around the text */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+    }
+
     
   </style>
 
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const dashboardContainer = document.querySelector(".dashboard-container");
+        setTimeout(() => {
+          if (dashboardContainer) {
+              dashboardContainer.style.display = "none";
+          }
+        }, 3000); // 3000ms = 3 seconds
+        });
+
+      </script>
 
 </head>
 
 
 <body>
   <?php require('header.php'); ?>
-
+  <div class="dashboard-container">
+   <h3>Welcome, <?php echo htmlspecialchars($name); ?> in our System</h3>
+  </div>
+  
 
   <!-- Carousel -->
   <div class="container-fluid px-lg-4 mt-4">

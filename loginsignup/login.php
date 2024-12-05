@@ -44,11 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Check if the user exists
             if ($user = mysqli_fetch_assoc($result)) {
                 // Compare the plain password with the stored password
-                if ($password === $user["pass"]) { // Use password_hash in production
+                if ($password === $user["pass"]) { 
                     // Store user info in the session
                     $_SESSION["user"] = $user["username"];
                     $_SESSION["user_id"] = $user["id"];
                     $_SESSION["user_email"] = $user["email"];
+                    $_SESSION["user_name"] = $user["name"]; // Store the real name
 
                     // Redirect to the dashboard page
                     header("Location: ../userdashboard.php");

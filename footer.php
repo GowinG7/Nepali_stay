@@ -98,5 +98,8 @@ $about_r = mysqli_fetch_assoc(select($about_q,$values,'i'));
       }
     }
   }
+
+    
+
   setActive();
 </script>
