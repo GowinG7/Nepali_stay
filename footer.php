@@ -99,7 +99,20 @@ $about_r = mysqli_fetch_assoc(select($about_q,$values,'i'));
     }
   }
 
-    
+    function checkLoginToBook(isLoggedIn, roomId) {
+      if (isLoggedIn === 1) { // Check if the user is logged in
+      if (roomId) { // Ensure roomId is valid
+          window.location.href = "confirm_booking.php?id=" + roomId;
+      } else {
+          alert("Invalid room selected. Please try again.");
+      }
+      } else {
+      if (confirm("You are not logged in. Would you like to log in now?")) {
+          window.location.href = "login.php"; // Redirect to login page
+      }
+      }
+    }
+
 
   setActive();
 </script>

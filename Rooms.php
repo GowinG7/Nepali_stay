@@ -1,8 +1,11 @@
+<?php
+session_start()?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>NEPALI STAY - ROOMS</title>
+  <title> ROOMS</title>
 
   <?php require('links.php'); ?>
 
@@ -119,7 +122,11 @@
 
               $book_btn = "";
               if(!$settings_r['shutdown']==1){
-               $book_btn = " <a href='#' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</a>";
+                $user = 0;
+                  if (isset($_SESSION['user']) && $_SESSION['user'] == true) {
+                $user = 1;
+                }
+            $book_btn = "<button onclick='checkLoginToBook($user,$room_data[id])'  class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
               }     
 
           //print room card

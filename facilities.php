@@ -1,8 +1,9 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>NEPALI STAY -FACILITIES </title>
+  <title>FACILITIES </title>
 
 
   <?php require('links.php'); ?>

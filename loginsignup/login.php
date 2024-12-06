@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if (usernamePattern.test(input) || emailPattern.test(input)) {
                     $("#username_error").text(""); // Clear error message
                 } else {
-                    $("#username_error").text("Username can only contain letters, numbers, underscores, and the @ symbol, or email must end with @gmail.com, @yahoo.com, or @outlook.com.");
+                    $("#username_error").text("Username can only contain letters, numbers, underscores, and the @ symbol, or email only contains a-z,0-9 and (.) and must end with @gmail.com, @yahoo.com, or @outlook.com.");
                 }
             });
 

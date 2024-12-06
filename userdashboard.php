@@ -17,7 +17,7 @@ if (isset($_SESSION["user_id"])) {
     $conn->close();
 } else {
     // Redirect to login page if session is not set
-    header("Location: ../loginsignup/login.php");
+    header("Location: loginsignup/login.php");
     exit();
 }
 ?>
@@ -26,7 +26,7 @@ if (isset($_SESSION["user_id"])) {
 <html lang="en">
 
 <head>
-  <title>NEPALI STAY -HOME</title>
+  <title> USER DASHBOARD</title>
 
   <?php require('links.php'); ?>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -207,7 +207,11 @@ if (isset($_SESSION["user_id"])) {
 
          $book_btn = "";
          if(!$settings_r['shutdown']==1){
-          $book_btn = "<a href='#' class='btn btn-sm text-white custom-bg shdaow-none'>Book Now</a>";
+          $user = 0;
+           if (isset($_SESSION['user']) && $_SESSION['user'] == true) {
+             $user = 1;
+           }
+          $book_btn = "<button onclick='checkLoginToBook($user,$room_data[id])' class='btn btn-sm text-white custom-bg shdaow-none'>Book Now</button>";
          }
 
           //print room card

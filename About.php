@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>NEPALI STAY - About</title>
+  <title> About</title>
 
   <?php require('links.php'); ?>
   <style>

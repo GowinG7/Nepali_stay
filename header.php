@@ -5,6 +5,7 @@ require('admin/essentials.php');
 
 
 <?php
+
 $settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
 $values = [1];
 $settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));

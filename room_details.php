@@ -1,8 +1,12 @@
+<?php session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>NEPALI STAY - ROOM DETAILS</title>
+  <title> ROOM DETAILS</title>
 
 
   <?php require('links.php'); ?>
@@ -27,8 +31,7 @@
         width: 100%;
         background-color: rgb(169, 134, 209);
       }
-    </style>
-    <style>
+    
       .breadcrumb-link {
       color: gray; /* Default text color */
       text-decoration: none; /* Remove underline */
@@ -39,7 +42,7 @@
       color: #6a1b9a; /* Change color on hover */
       }
 </style>  
-    </style>
+    
 </head>
 
 <body>
@@ -179,15 +182,15 @@
 
 
                 $book_btn = "";
-                if(!$settings_r['shutdown']==1){
-                 $book_btn = "<a href='#' class='btn btn-sm text-white custom-bg shdaow-none'>Book Now</a>";
-                }
-       
-
-              echo<<<book
-               $book_btn  
+            if (!$settings_r['shutdown'] == 1) {
+              $user = 0;
+              if (isset($_SESSION['user']) && $_SESSION['user'] == true) {
+                $user = 1;
+              }
+              echo <<<book
+               <button onclick='checkLoginToBook($user,$room_data[id])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now</button> 
               book;
-
+            }
             ?>
             </div>
           </div>
@@ -230,6 +233,22 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
+  <script>
+     function checkLoginToBook(isLoggedIn, roomId) {
+      if (isLoggedIn === 1) { // Check if the user is logged in
+      if (roomId) { // Ensure roomId is valid
+          window.location.href = "confirm_booking.php?id=" + roomId;
+      } else {
+          alert("Invalid room selected. Please try again.");
+      }
+      } else {
+      if (confirm("You are not logged in. Would you like to log in now?")) {
+          window.location.href = "login.php"; // Redirect to login page
+      }
+      }
+    }
+  </script>
+  
 </body>
 
 </html>
