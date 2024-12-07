@@ -24,8 +24,8 @@ if (isset($_POST["submit"])) {
     if (!preg_match("/^[a-zA-Z0-9_@]+$/", $username)) {
         array_push($errors, "Username can only contain letters, numbers, underscores, and the @ symbol.");
     }
-    if (!preg_match("/^[a-zA-Z0-9.]+@(gmail|yahoo|outlook)\.com$/", $email)) {
-        array_push($errors, "Email must end with @gmail.com, @yahoo.com, or @outlook.com.");
+    if (!preg_match("/^[a-z0-9.]+@(gmail|yahoo|outlook)\.com$/", $email)) {
+        array_push($errors, "Email must contains a-z,0-9,.(dot/peroids) and end with @gmail.com, @yahoo.com, or @outlook.com.");
     }
     if (!preg_match("/^\d{10}$/", $phone)) {
         array_push($errors, "Phone number must be exactly 10 digits.");
