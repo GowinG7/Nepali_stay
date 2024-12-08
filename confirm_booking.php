@@ -2,14 +2,59 @@
 session_start();
 require('links.php');
 require('config.php');
+
+if (isset($_POST["pay_now"])) {
+  // Collecting form data
+  $name = $_POST['name'];
+  $phone = $_POST['phone'];
+  $email = $_POST['email'];
+  $room_name = $_POST['roomname'];
+  $checkin = $_POST['checkin'];
+  $checkout = $_POST['checkout'];
+
+  
+  // Database connection
+  $con = mysqli_connect("localhost", "root", "", "nepali_stay");
+
+  if (!$con) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+
+  // Prepare and execute query
+  $query = "INSERT INTO `booking` (`name`, `phone`, `email`, `roomname`, `checkin`, `checkout`) VALUES (?, ?, ?, ?, ?, ?)";
+  $stmt = $con->prepare($query);
+
+  if ($stmt === false) {
+      die("Failed to prepare statement: " . $con->error);
+  }
+
+  $stmt->bind_param("ssssss", $name, $phone, $email, $room_name, $checkin, $checkout);
+  
+  if ($stmt->execute()) {
+    // Booking was successful
+    echo "<script>alert('Booking confirmed successfully!. You will receive the confirmation from admin in email shortly');</script>";
+} else {
+    // Booking failed
+    echo "<script>alert('Error confirming booking. Please try again later.');</script>";
+}
+
+
+  $stmt->close();
+  mysqli_close($con);
+
+   
+}
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <title> CONFIRM BOOKING</title>
-
+  
     <style>
       @media screen and (max-width: 575px) {
         .availability-form {
@@ -41,11 +86,14 @@ require('config.php');
       color: #6a1b9a; /* Change color on hover */
       }
 </style>  
+
     
 </head>
 
 <body>
   <?php require('header.php'); ?>
+
+
   
    <?php
    
@@ -108,6 +156,8 @@ require('config.php');
             </div>
           </div>
           
+          
+
           <!-- Begin Row for Booking Details -->
           <div class="row">
             <!-- Room Details (Left Column) -->
@@ -137,20 +187,24 @@ require('config.php');
             <div class="col-lg-5 col-md-12 px-4">
               <div class="card mb-4 border-0 shadow-sm rounded-3">
                 <div class="card-body">
-                  <form action="#" id="booking_form">
+                  <form action="confirm_booking.php" method="POST"  id="booking_form">
                     <h6 class="mb-3">Booking Details</h6>
                     <div class="row">
                       <div class="col-md-6">
                         <label class="form-label">Name</label>
-                        <input name="name" type="text" value="<?php echo $user_data['name'] ?>" class="form-control shadow-none" required>
+                        <input name="name" type="text" value="<?php echo $user_data['name'] ?>" class="form-control shadow-none" readonly>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label">Phone Number</label>
-                        <input name="phone" type="number" value="<?php echo $user_data['phone'] ?>" class="form-control shadow-none" required>
+                        <input name="phone" type="number" value="<?php echo $user_data['phone'] ?>" class="form-control shadow-none" readonly>
                       </div>
                       <div class="col-md-12 mb-3">
                         <label class="form-label">Email</label>
-                        <input name="email" type="email"value="<?php echo $user_data['email']?>" class="form-control shadow-none" required>
+                        <input name="email" type="email"value="<?php echo $user_data['email']?>" class="form-control shadow-none" readonly>
+                      </div>
+                      <div class="col-md-12 mb-3">
+                      <label class="form-label">Room Name</label>
+                      <input name="roomname" type="text" value="<?php echo $room_data['name']; ?>" class="form-control shadow-none" readonly>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label">Check-in</label>
@@ -165,7 +219,7 @@ require('config.php');
                           <span class="sr-only">Loading...</span>
                         </div>
                         <h6 class="mb-3 text-danger" id="pay_info">Provide check-in & check-out date</h6>
-                        <button name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Pay</button>
+                        <button type="submit" name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Confirm booking</button>
                       </div>
                     </div>
                   </form>
