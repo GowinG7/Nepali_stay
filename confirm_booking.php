@@ -59,37 +59,37 @@ if (isset($_POST["pay_now"])) {
 <head>
   <title> CONFIRM BOOKING</title>
   
-    <style>
-      @media screen and (max-width: 575px) {
-        .availability-form {
-          margin-top: 25px;
-          padding: 0 35px;
-        }
-      }
+        <style>
+          @media screen and (max-width: 575px) {
+            .availability-form {
+              margin-top: 25px;
+              padding: 0 35px;
+            }
+          }
 
-      body {
-        background-color: rgb(240, 237, 237);
-      }
+          body {
+            background-color: rgb(240, 237, 237);
+          }
 
-      .custom-navbar {
-        background-color: rgb(169, 134, 209);
-      }
+          .custom-navbar {
+            background-color: rgb(169, 134, 209);
+          }
 
-      .container-fluid-footer {
-        width: 100%;
-        background-color: rgb(169, 134, 209);
-      }
-    
-      .breadcrumb-link {
-      color: gray; /* Default text color */
-      text-decoration: none; /* Remove underline */
-      transition: transform 0.3s ease, color 0.3s ease; /* Smooth zoom and color transition */
-      }
-      .breadcrumb-link:hover {
-      transform: scale(1.2); /* Slightly enlarge the link */
-      color: #6a1b9a; /* Change color on hover */
-      }
-</style>  
+          .container-fluid-footer {
+            width: 100%;
+            background-color: rgb(169, 134, 209);
+          }
+        
+          .breadcrumb-link {
+          color: gray; /* Default text color */
+          text-decoration: none; /* Remove underline */
+          transition: transform 0.3s ease, color 0.3s ease; /* Smooth zoom and color transition */
+          }
+          .breadcrumb-link:hover {
+          transform: scale(1.2); /* Slightly enlarge the link */
+          color: #6a1b9a; /* Change color on hover */
+          }
+    </style>  
 
     
 </head>
@@ -222,7 +222,7 @@ if (isset($_POST["pay_now"])) {
                         <div class="spinner-border text-info mb-3 d-none" id="info_loader" role="status">
                           <span class="sr-only">Loading...</span>
                         </div>
-                        <h6 class="mb-3 text-danger" id="pay_info">Provide check-in & check-out date</h6>
+                        <h6 class="mb-3 text-danger" id="pay_info">Provide check-in & check-out date to enable below confirm booking button</h6>
                         <button type="submit" name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Confirm booking</button>
                       </div>
                     </div>

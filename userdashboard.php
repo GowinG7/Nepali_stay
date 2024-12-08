@@ -119,7 +119,7 @@ if (isset($_SESSION["user_id"])) {
     </div>
   </div>
 
-  <!--check availability-->
+  <!--check availability
   <div class="container availability-form">
     <div class="row justify-content-center">
       <div class="col-lg-8 bg-white shadow p-4 rounded">
@@ -134,7 +134,7 @@ if (isset($_SESSION["user_id"])) {
               <label class="form-label" style="font-weight:500;">Check-out</label>
               <input type="date" class="form-control shadow-none">
             </div>
-            <!--<div class="col-lg-3 mb-3">
+            <div class="col-lg-3 mb-3">
             <label class="form-label" style="font-weight:500;">Adult</label>
             <select class="form-select shadow-none" >
               <option value="1">One</option>
@@ -149,15 +149,15 @@ if (isset($_SESSION["user_id"])) {
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
-          </div>      -->
-            <!--In bootstrap there can be 12 columns in 1 row-->
+          </div> 
+            In bootstrap there can be 12 columns in 1 row
             <button type="submit" class="btn btn-primary">Check Availability</button>
 
           </div>
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <!--Our Rooms-->
@@ -231,15 +231,6 @@ if (isset($_SESSION["user_id"])) {
                         $facilities_data
                       </div>
 
-                      <div class="rating mb-4">
-                        <h6 class="mb-1">Rating</h6>
-                        <span class="badge rounded-pill bg-light">
-                          <i class="bi bi-star-fill text-warning"></i>
-                          <i class="bi bi-star-fill text-warning"></i>
-                          <i class="bi bi-star-fill text-warning"></i>
-                          <i class="bi bi-star-fill text-warning"></i>
-                        </span>
-                      </div>
                       <div class="d-flex justify-content-evenly mb-2">
                         $book_btn  
                       <a href="room_details.php?id=$room_data[id]" class="btn btn-sm btn-outline-dark shadow-none">More details</a>
@@ -287,10 +278,10 @@ if (isset($_SESSION["user_id"])) {
   </div>
 
   <!--Testimonials :testimonial refers to a written statement or review provided by a guest or customer about 
-  their experience with a particular hotel-->
+  their experience with a particular hotel
   <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">TESTIMONIALS</h2>
   <div class="container mt-5">
-    <!-- Swiper -->
+     Swiper 
     <div class="swiper swiper-testimonials">
       <div class="swiper-wrapper mb-5">
         <div class="swiper-slide bg-white p-4">
@@ -348,7 +339,7 @@ if (isset($_SESSION["user_id"])) {
     <div class="col-lg-12 text-center mt-5">
       <a href="about1.php" class="btn btn-sm btn-outline-dark rounded- fw-bold shadow-none">Know More</a>
     </div>
-  </div>
+  </div>  -->
 
 
   <!--Reach Us (google map embed)-->

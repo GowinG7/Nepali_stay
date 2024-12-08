@@ -126,15 +126,7 @@
               echo <<<price
                 <h4 class="mb-1">Rs.$room_data[price] per night</h4>
               price;
-
-              echo <<<rating
-                <div class="mb-4">
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                <i class="bi bi-star-fill text-warning"></i>
-                rating;
-
+             
 
               $fea_q = mysqli_query($con, "SELECT f.name FROM `features` f 
                 INNER JOIN `room_features` rfea ON f.id = rfea.features_id 
@@ -206,7 +198,7 @@
         </p> 
       </div> 
     </div>
-  <!-- For review rating in the room more details -->
+  <!-- For review rating in the room more details 
     <div>
       <h5 class="mb-3">Reviews & Ratings</h5>
       <div>
@@ -225,7 +217,7 @@
           <i class="bi bi-star-fill text-warning"></i>
         </div>
       </div>
-    </div>
+    </div> -->
     
   </div>
 

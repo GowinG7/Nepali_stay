@@ -40,7 +40,7 @@ session_start()?>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <!-- left side filter section in rooms page-->
+      <!-- left side filter section in rooms page
       <div class="col-lg-3 col-md-12 mb-lg-0 mb-4 ps-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow">
           <div class="container-fluid flex-lg-column align-items-stretch">
@@ -76,9 +76,9 @@ session_start()?>
             </div>
           </div>
         </nav>
-      </div>
+      </div> -->
       <!-- Rooms cards -->
-      <div class="col-lg-9 col-md-12 px-4">
+      <div class="col-lg-12 col-md-12 px-4">
 
         <?php
           //rooms table bata status 1(active bako) ani removed ko value 0(admin panel bata remove nagaraiyeko if remove grya vaye 1 hunxa ) 
