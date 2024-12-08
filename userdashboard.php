@@ -21,6 +21,7 @@ if (isset($_SESSION["user_id"])) {
     exit();
 }
 ?>
+ 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +82,7 @@ if (isset($_SESSION["user_id"])) {
           if (dashboardContainer) {
               dashboardContainer.style.display = "none";
           }
-        }, 3000); // 3000ms = 3 seconds
+        }, 2000); // 3000ms = 3 seconds
         });
 
       </script>
@@ -91,10 +92,12 @@ if (isset($_SESSION["user_id"])) {
 
 <body>
   <?php require('header.php'); ?>
+
   <div class="dashboard-container">
-   <h3>Welcome, <?php echo htmlspecialchars($name); ?> in our System</h3>
-  </div>
+        <h3><?php echo htmlspecialchars($name); ?> Account</h3>
+       </div>
   
+
 
   <!-- Carousel -->
   <div class="container-fluid px-lg-4 mt-4">
