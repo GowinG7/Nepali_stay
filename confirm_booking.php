@@ -11,41 +11,45 @@ if (isset($_POST["pay_now"])) {
   $room_name = $_POST['roomname'];
   $checkin = $_POST['checkin'];
   $checkout = $_POST['checkout'];
+  $room_price = $_SESSION['room']['price']; // Room price from session
 
-  
+  // Calculate the number of days and total payment
+  $checkin_date = new DateTime($checkin);
+  $checkout_date = new DateTime($checkout);
+  $interval = $checkin_date->diff($checkout_date);
+  $days = $interval->days; // Total number of days
+  $total_payment = $days * $room_price; // Total payment calculation
+
   // Database connection
   $con = mysqli_connect("localhost", "root", "", "nepali_stay");
 
   if (!$con) {
-      die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed: " . mysqli_connect_error());
   }
 
-  // Prepare and execute query
-  $query = "INSERT INTO `booking` (`name`, `phone`, `email`, `roomname`, `checkin`, `checkout`) VALUES (?, ?, ?, ?, ?, ?)";
+  // Prepare and execute query to insert booking details
+  $query = "INSERT INTO `booking` (`name`, `phone`, `email`, `roomname`, `checkin`, `checkout`, `days`, `payment`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
   $stmt = $con->prepare($query);
 
   if ($stmt === false) {
-      die("Failed to prepare statement: " . $con->error);
+    die("Failed to prepare statement: " . $con->error);
   }
 
-  $stmt->bind_param("ssssss", $name, $phone, $email, $room_name, $checkin, $checkout);
-  
+  $stmt->bind_param("ssssssii", $name, $phone, $email, $room_name, $checkin, $checkout, $days, $total_payment);
+
   if ($stmt->execute()) {
     // Booking was successful
     echo "<script>alert('Booking confirmed successfully!. You will receive the confirmation from admin in email shortly');</script>";
-} else {
+  } else {
     // Booking failed
     echo "<script>alert('Error confirming booking. Please try again later.');</script>";
-}
-
+  }
 
   $stmt->close();
   mysqli_close($con);
-
-   
 }
-
 ?>
+
 
 
 

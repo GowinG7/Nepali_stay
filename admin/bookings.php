@@ -42,6 +42,8 @@ adminLogin(); //essentials file ma xa
                         <th scope="col">Room Type</th>
                         <th scope="col">Check-in</th>
                         <th scope="col">Check-out</th>
+                        <th scope="col">Total Days</th>
+                        <th scope="col">Total Price</th>
                         <th scope="col">verified</th>
                         <th scope="col">Date</th>
                         <th scope="col">Action</th>

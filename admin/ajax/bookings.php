@@ -50,6 +50,8 @@
                 <td>$row[roomname]</td>
                 <td>$row[checkin]</td>
                 <td>$row[checkout]</td>
+                <td>$row[days] night</td>
+                <td>Rs.$row[payment]</td>
                 <td>$verified</td>
                 <td>$date</td>
                 <td>$del_btn</td>
@@ -130,6 +132,8 @@
                 <td>$row[roomname]</td>
                 <td>$row[checkin]</td>
                 <td>$row[checkout]</td>
+                <td>$row[days] night</td>
+                <td>Rs.$row[payment]</td>
                 <td>$verified</td>
                 <td>$date</td>
                 <td>$del_btn</td>
