@@ -48,7 +48,7 @@
     <h2 class="fw-bold h-font text-center">CONTACT US</h2>
     <div class="h-line" style="width: 150px; height: 1.6px; background-color: black; margin: 10px auto;"></div>
     <p class="text-center mt-3 fs-5">
-      If you have any queries or problems, please feel free to contact us. We respond within 24 hours.
+      If you have any queries or problems while using this system, please feel free to contact us. We respond within 24 hours through email or to your mobile number.
     </p>
   </div>
 
