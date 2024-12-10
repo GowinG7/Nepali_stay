@@ -142,7 +142,9 @@
       const namePattern = /^[a-zA-Z\s]+$/;
       const emailPattern = /^[a-z0-9\.]+@(gmail\.com|outlook\.com|yahoo\.com)$/;
       const subjectPattern = /^[a-zA-Z\s]+$/;
-      const messagePattern = /^[a-zA-Z0-9\s]+$/;
+      // Regex to validate input: allows letters, numbers, spaces, commas, periods, hyphens, single quotes, double quotes, colons, and whitespace.
+      const messagePattern = /^[a-zA-Z0-9.,\-'":\s]+$/;
+
 
       // Name validation
       function validateName() {
@@ -182,7 +184,7 @@
         const message = document.getElementById("message").value.trim();
         const error = document.getElementById("messageError");
         if (!messagePattern.test(message)) {
-          error.textContent = "Message should contain only letters, numbers, and spaces.";
+          error.textContent = "Should contain only these (a-z A-Z 0-9 hypen comma single and double quotes and full stop)";
         } else {
           error.textContent = "";
         }
