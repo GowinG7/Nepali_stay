@@ -235,7 +235,7 @@
       }
       } else {
       if (confirm("You are not logged in. Would you like to log in now?")) {
-          window.location.href = "login.php"; // Redirect to login page
+          window.location.href = "loginsignup/login.php"; // Redirect to login page
       }
       }
     }
