@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-
 require('../db_config.php');
 require('../essentials.php');
 
-date_default_timezone_set("Asia/Kathmandu");
+//date_default_timezone_set("Asia/Nepal"); rakhda today date ma jheu garyo khali earlier earlier
 
 if(isset($_POST['check_availability']))
 {
@@ -13,12 +12,18 @@ if(isset($_POST['check_availability']))
     $status = "";
     $result = "";
 
-     // Check in and out validations
-     $today_date = new DateTime(date("Y-m-d"));
-     $checkin_date = new DateTime($frm_data['check_in']);
-     $checkout_date = new DateTime($frm_data['check_out']);
+    // Ensure check-in and check-out dates are provided
+    if(!isset($frm_data['check_in']) || !isset($frm_data['check_out'])) {
+        $status = 'dates_missing';
+        $result = json_encode(["status" => $status]);
+        echo $result;
+        exit;
+    }
 
- 
+    // Check in and out validations
+    $today_date = new DateTime(date("Y-m-d"));
+    $checkin_date = new DateTime($frm_data['check_in']);
+    $checkout_date = new DateTime($frm_data['check_out']);
 
     if($checkin_date == $checkout_date)
     {
@@ -35,25 +40,27 @@ if(isset($_POST['check_availability']))
         $status = 'check_in_earlier';
         $result = json_encode(["status" => $status]);
     }
-    //check booking availability if status is blank else return the error
+
+    // Check booking availability if status is blank else return the error
     if($status != ''){
         echo $result;
-    }
-    else{
-        if($_SESSION['room'])  //confirm booking ma 
-        
-        //run query to check room is available or not
-        
+    } else {
+        if(!isset($_SESSION['room'])) { 
+            $status = 'room_not_selected';
+            $result = json_encode(["status" => $status]);
+            echo $result;
+            exit;
+        }
+
+        // Confirm booking and check room availability
         $count_days = date_diff($checkin_date, $checkout_date)->days;
         $payment = $_SESSION['room']['price'] * $count_days;
 
         $_SESSION['room']['payment'] = $payment;
         $_SESSION['room']['available'] = true;
 
-        $result = json_encode(["status"=>'available',"days"=>$count_days,"payment"=> $payment]);
+        $result = json_encode(["status" => 'available', "days" => $count_days, "payment" => $payment]);
         echo $result;
     }
-
 }
-
 ?>
