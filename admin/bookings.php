@@ -13,7 +13,7 @@ adminLogin(); //essentials file ma xa
         require('links.php');
         ?>  
     </head>
-    <body class="bg-light">
+    <body style="background-color:lightgray">
      
     <?php require('header.php'); ?>
 
@@ -24,7 +24,7 @@ adminLogin(); //essentials file ma xa
             <h3 class="mb-4">Bookings</h3>
             
             <div class="card border-0 shadow-sm mb-4">
-              <div class="card-body">
+              <div class="card-body" style="background-color:whitesmoke">
                   <!-- for search box in users section of the admin panel -->
                 <div class="text-end mb-4">  
                    <!--(function users.js ma) oninput event handler used grya xau jaba yesma kei data input hunxa taba yo function call huna paryO -->  

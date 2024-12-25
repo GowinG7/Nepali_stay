@@ -22,6 +22,9 @@ $settings_r = mysqli_fetch_assoc(select($settings_q,$values,'i'));
             <ul class="nav nav-pills flex-column">
             
             <li class="nav-item">
+            <a class="nav-link text-white" href="dashboard.php">Dashboard</a>
+            </li>
+            <li class="nav-item">
             <a class="nav-link text-white" href="bookings.php">Bookings</a>
             </li>
             <li class="nav-item">

@@ -12,7 +12,7 @@ adminLogin(); //essentials file ma xa
         require('links.php');
         ?>  
     </head>
-    <body class="bg-light">
+    <body style="background-color:lightgray">
      
     <?php require('header.php'); ?>
 
@@ -23,7 +23,7 @@ adminLogin(); //essentials file ma xa
         <h3 class="mb-4">Settings</h3>
 
     <!-- General settings section -->
-        <div class="card border-0 shadow-sm mb-4" >
+        <div class="card border-0 shadow-sm mb-4" style="background-color:whitesmoke" >
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h5 class="card-title m-0" >General Settings</h5>
@@ -68,7 +68,7 @@ adminLogin(); //essentials file ma xa
       </div>
 
        <!-- Shutdown section -->
-        <div class="card border-0 shadow-sm mb-4" > 
+        <div class="card border-0 shadow-sm mb-4" style="background-color:whitesmoke"> 
         <div class="card-body">
         <div class="d-flex align-items-center justify-content-between mb-3">
           <h5 class="card-title m-0" >Shutdown Website</h5>
@@ -87,7 +87,7 @@ adminLogin(); //essentials file ma xa
         </div>
 
         <!-- Contact details section -->
-        <div class="card border-0 shadow-sm mb-4" >
+        <div class="card border-0 shadow-sm mb-4" style="background-color:whitesmoke">
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h5 class="card-title m-0" >Contacts Settings</h5>
@@ -223,7 +223,7 @@ adminLogin(); //essentials file ma xa
         </div>
 
         <!-- Management Team section -->
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card border-0 shadow-sm mb-4" style="background-color:lightgray">
         <div class="card-body">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h5 class="card-title m-0">Management Team</h5>

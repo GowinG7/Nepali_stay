@@ -13,7 +13,7 @@ adminLogin(); //essentials file ma xa
         require('links.php');
         ?>  
     </head>
-    <body class="bg-light">
+    <body style="background-color:lightgray">
      
     <?php require('header.php'); ?>
 
@@ -23,7 +23,7 @@ adminLogin(); //essentials file ma xa
           <div class="col-lg-10 ms-auto p-4 overflow-hidden"> 
             <h3 class="mb-4">USERS</h3>
             
-            <div class="card border-0 shadow-sm mb-4">
+            <div class="card border-0 shadow-sm mb-4" style="background-color:whitesmoke">
               <div class="card-body">
                   <!-- for search box in users section of the admin panel -->
                 <div class="text-end mb-4">  

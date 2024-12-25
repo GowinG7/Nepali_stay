@@ -65,7 +65,7 @@ if(isset($_GET['del']))
         require('links.php')
         ?>  
     </head>
-    <body class="bg-light">
+    <body style="background-color:lightgray">
      
     <?php require('header.php'); ?>
 
@@ -76,7 +76,7 @@ if(isset($_GET['del']))
         <h3 class="mb-4">USER QUERIES</h3>
 
 
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card border-0 shadow-sm mb-4" style="background-color:whitesmoke">
         <div class="card-body">
           <div class="text-end mb-4">
             <a href="?seen=all" class="btn btn-dark rounded-pill shadow-none btn-sm">
