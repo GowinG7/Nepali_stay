@@ -6,7 +6,15 @@
   <title> ABOUT </title>
 
 
-  <?php require('links.php'); ?>
+  <?php require('links.php');
+  
+  if (!isset($_SESSION["user_id"])) {
+   
+    // Redirect to login page if session is not set
+    header("Location: loginsignup/login.php");
+    exit();
+    }
+  ?>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>

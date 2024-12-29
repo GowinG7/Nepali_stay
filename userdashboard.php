@@ -2,10 +2,10 @@
 session_start(); // Start the session
 
 require('config.php');
-//Ensure `user_id` is set in the session
-if (isset($_SESSION["user_id"])) {
+
+    if (isset($_SESSION["user_id"])) {
     $user_id = $_SESSION["user_id"];
-    
+
     // Fetch the name from the `user_creden` table
     $query = "SELECT name FROM user_creden WHERE id = ?";
     $stmt = $conn->prepare($query);
@@ -15,11 +15,13 @@ if (isset($_SESSION["user_id"])) {
     $stmt->fetch();
     $stmt->close();
     $conn->close();
-} else {
+    }  else {
     // Redirect to login page if session is not set
     header("Location: loginsignup/login.php");
     exit();
-}
+    }
+
+
 ?>
  
 
@@ -32,50 +34,52 @@ if (isset($_SESSION["user_id"])) {
   <?php require('links.php'); ?>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <style>
-    /*these two css are only used in this file*/
-    .availability-form {
-      margin-top: -50px;
-      z-index: 2;
-      position: relative;
-    }
-
-    @media screen and (max-width:575px) {
+    <style>
+      /*these two css are only used in this file*/
       .availability-form {
-        margin-top: 25px;
-        padding: 0 35px;
+        margin-top: -50px;
+        z-index: 2;
+        position: relative;
       }
-    }
 
-    body {
-      background-color: #d8d3ec;
-      /* Replace with your chosen color code */
-    }
+      @media screen and (max-width:575px) {
+        .availability-form {
+          margin-top: 25px;
+          padding: 0 35px;
+        }
+      }
 
-    .custom-navbar {
-      background-color: rgb(78, 171, 207);
-      /* Dark Blue color */
-    }
-      /*to make the footer as same as the navbar bg color */
-      .container-fluid-footer{
+      body {
+        background-color: #d8d3ec;
+        /* Replace with your chosen color code */
+      }
+
+      .custom-navbar {
         background-color: rgb(78, 171, 207);
+        /* Dark Blue color */
+      }
+        /*to make the footer as same as the navbar bg color */
+        .container-fluid-footer{
+          background-color: rgb(78, 171, 207);
+        }
+
+      .dashboard-container {
+      color: black; /* Text color */
+      position: absolute; /* Allows precise positioning */
+      top: 9px; /* Distance from the top */
+      right: 150px; /* Distance from the right */
+      background-color: rgb(167, 209, 226); /* Optional: Light green background */
+      border-radius: 5px; /* Optional: Rounded corners */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+      font-size: 14px;
+      padding: 10px;
+      
       }
 
-    .dashboard-container {
-    color: green; /* Text color */
-    position: absolute; /* Allows precise positioning */
-    top: 20px; /* Distance from the top */
-    right: 20px; /* Distance from the right */
-    background-color: #f0f9f0; /* Optional: Light green background */
-    padding: 10px; /* Optional: Padding around the text */
-    border-radius: 5px; /* Optional: Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
-    }
+      
+    </style>
 
-    
-  </style>
-
-      <script>
+     <!-- <script>
         document.addEventListener("DOMContentLoaded", function () {
         const dashboardContainer = document.querySelector(".dashboard-container");
         setTimeout(() => {
@@ -85,7 +89,7 @@ if (isset($_SESSION["user_id"])) {
         }, 2000); // 3000ms = 3 seconds
         });
 
-      </script>
+      </script> -->
 
 </head>
 
@@ -93,8 +97,8 @@ if (isset($_SESSION["user_id"])) {
 <body>
   <?php require('header.php'); ?>
 
-  <div class="dashboard-container">
-        <h3><?php echo htmlspecialchars($name); ?> Account</h3>
+     <div class="dashboard-container">
+       <?php echo htmlspecialchars($name);?><br>Account 
        </div>
   
 
@@ -230,7 +234,7 @@ if (isset($_SESSION["user_id"])) {
                        $features_data
                     </div>
                       <div class="facilities mb-4">
-                        <h6 class="mb-1">Features</h6>
+                        <h6 class="mb-1">Facilities</h6>
                         $facilities_data
                       </div>
 

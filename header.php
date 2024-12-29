@@ -1,10 +1,12 @@
 <?php
 require('admin/db_config.php');
 require('admin/essentials.php');
+
 ?>
 
 
 <?php
+
 
 $settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
 $values = [1];
@@ -54,7 +56,7 @@ nav bar ko tag lai active dekhauna active tag ko used hunxa tara dynamically act
       
       <div class="d-flex">
         <?php if (isset($_SESSION["user"])): // Check if the user is logged in ?>
-          <a href="logout.php" class="btn btn-outline-dark shadow-none me-lg-3 me-2">Log Out</a>
+          <a href="logout.php" class="btn btn-outline-dark shadow-none me-lg-3 me-2 mt-1">Log Out</a>
         <?php endif; // Close the if statement ?>
       </div>
     </div>

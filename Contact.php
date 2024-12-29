@@ -7,7 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> CONTACT</title>
 
-  <?php require('links.php'); ?>
+  <?php require('links.php');
+  if (!isset($_SESSION["user_id"])) {
+   
+    // Redirect to login page if session is not set
+    header("Location: loginsignup/login.php");
+    exit();
+    }
+  ?>
 
   <style>
     body {

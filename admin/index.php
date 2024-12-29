@@ -5,7 +5,7 @@
  //yedi aba admin panel ko login garerw admin dashboard ma xa tara  pani teha bata back grda admin login ma aauxa baney tyo session check gari dashboard mai redirect grney
  session_start();
   if((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin']==true)){
-    redirect('bookings.php');
+    redirect('dashboard.php');
    } //aba yeti gareC jaba samma logout garinnna aru page ma janna 
  #imp note: eutai file waa page ma barambar session start grna mildaina matlab euta session_start(); bayeC aru ma pani hunu bayena
    
@@ -60,7 +60,7 @@
          $row = mysqli_fetch_assoc($res);
          $_SESSION['adminLogin'] = true;
          $_SESSION['adminId'] = $row['sr_no'];
-         redirect('bookings.php');//function call (essentials.php ma xa)
+         redirect('dashboard.php');//function call (essentials.php ma xa)
      } 
      else{
          alert('error', 'Login failed - Invalid Credentials'); //type error msg-->yeta patiko

@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         if (mysqli_num_rows($result) > 0) {
-            array_push($errors, "Email already exists!");
+            array_push($errors, "Registered failed! Email is already used - Use another email while signup");
         }
         mysqli_stmt_close($stmt);
     }
@@ -58,7 +58,7 @@ if (isset($_POST["submit"])) {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         if (mysqli_num_rows($result) > 0) {
-            array_push($errors, "Username already exists!");
+            array_push($errors, "Registered failed! Username is already used- create other one");
         }
         mysqli_stmt_close($stmt);
     }
@@ -170,7 +170,7 @@ if (isset($_POST["submit"])) {
             // Hide messages after 3 seconds
             setTimeout(function () {
                 $(".alert").fadeOut("slow");
-            }, 3000);
+            }, 4000);
 
             // Field validations
             $('#full_name').on('blur', function () {
