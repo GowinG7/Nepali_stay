@@ -27,7 +27,7 @@ if($settings_r['shutdown']==1){
 <html lang="en">
 
 <head>
-  <title>USER DASHBOARD</title>
+  <title>Home Page Of Nepali Stay</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>
@@ -79,16 +79,17 @@ if($settings_r['shutdown']==1){
           <a class="nav-link  me-2"  href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="index.php">Rooms</a>
+          <a href="javascript:void(0);" class="nav-link me-2" onclick="showLoginAlert()">
+          Rooms</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="index.php">Facilities</a>
+          <a href="javascript:void(0);" class="nav-link me-2" onclick="showLoginAlert()">Facilities</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="index.php">Contact us</a>
+          <a href="javascript:void(0);" class="nav-link me-2" onclick="showLoginAlert()">Contact us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link me-2" href="index.php">About</a>
+          <a href="javascript:void(0);" class="nav-link me-2" onclick="showLoginAlert()">About</a>
         </li>
         
       </ul>
