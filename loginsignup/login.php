@@ -107,9 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h4>Login</h4>
 
             <!-- Username or Email input -->
-            <input 
-                name="username" 
-                type="text" 
+            <input type="text" name="username" 
+                 
                 class="form-control" 
                 placeholder="Username or Email" 
                 id="username" 

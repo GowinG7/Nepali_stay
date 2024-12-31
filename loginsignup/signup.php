@@ -14,6 +14,8 @@ if (isset($_POST["submit"])) {
     $phone = $_POST["phone"];
     $password = $_POST["pass"];
     $passwordRepeat = $_POST["cpass"];
+    $security_question = $_POST["question"];
+    $security_answer = $_POST["answer"];
 
     $errors = array();
 
@@ -33,6 +35,10 @@ if (isset($_POST["submit"])) {
     if (strlen($password) < 8) {
         array_push($errors, "Password must be at least 8 characters long.");
     }
+    if (empty($security_answer)) {
+        array_push($errors, "Security answer cannot be empty.");
+    }
+    
     if ($password !== $passwordRepeat) {
         array_push($errors, "Passwords do not match.");
     }
@@ -65,10 +71,10 @@ if (isset($_POST["submit"])) {
 
     // Insert data if no errors
     if (count($errors) === 0) {
-        $sql = "INSERT INTO `user_creden`(`name`, `username`, `email`, `phone`, `pass`) VALUES(?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `user_creden`(`name`, `username`, `email`, `phone`, `pass`,`security_question`,`security_answer`) VALUES(?, ?, ?, ?, ?,?,?)";
         $stmt = mysqli_stmt_init($conn);
         if (mysqli_stmt_prepare($stmt, $sql)) {
-            mysqli_stmt_bind_param($stmt, "sssss", $fullName, $username, $email, $phone, $password);
+            mysqli_stmt_bind_param($stmt, "sssssss", $fullName, $username, $email, $phone, $password, $security_question, $security_answer);
             if (mysqli_stmt_execute($stmt)) {
                 $successMessage = "Account created successfully! You can now log in.";
             } else {
@@ -126,13 +132,13 @@ if (isset($_POST["submit"])) {
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="hello@123" required>
+                <input type="text" id="username" name="username" placeholder="example:hello@123_" required>
                 <div class="error-message" id="username_error"></div> <!-- Error message container -->
             </div>
 
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="name@gmail.com" required>
+                <input type="email" id="email" name="email" placeholder="example:name@gmail.com" required>
                 <div class="error-message" id="email_error"></div> <!-- Error message container -->
             </div>
 
@@ -141,6 +147,24 @@ if (isset($_POST["submit"])) {
                 <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" required>
                 <div class="error-message" id="phone_error"></div> <!-- Error message container -->
             </div>
+
+            <div class="form-group">
+            <label for="question">Choose Security Question:</label>
+            <select id="question" name="question" style="color:grey" required>
+                <option value="color">Favourite Color</option>
+                <option value="food">Favourite Food</option>
+                <option value="fruit">Favourite Fruit</option>
+                <option value="pet">Favourite Pet</option>
+                <option value="subject">Favourite Subject</option>
+                <option value="place">Favourite Place</option>
+                <option value="laptop">Favourite Laptop</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answer">Enter Answer:</label>
+            <input type="text" id="answer" name="answer" placeholder="Enter your answer" required>
+            <div class="error-message" id="answer_error"></div>
+        </div>
 
             <div class="form-row">
                 <div class="form-group">
@@ -217,6 +241,16 @@ if (isset($_POST["submit"])) {
                     $('#pass_error').hide();
                 }
             });
+            $('#answer').on('blur', function () {
+            var answer = $(this).val().trim(); // Trim to remove extra spaces
+            if (answer === '') {
+            $('#answer_error').text('Security answer cannot be empty.').show();
+            } else {
+            $('#answer_error').hide();
+            }
+            });
+
+
 
             $('#cpass').on('blur', function () {
                 var cpass = $(this).val();

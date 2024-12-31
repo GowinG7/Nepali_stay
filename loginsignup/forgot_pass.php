@@ -1,16 +1,12 @@
 <?php
 session_start(); // Start the session
-
-// Include database configuration
 require_once 'db_config.php'; // Ensure $conn is initialized
 require('../admin/links.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Clear previous messages
     unset($_SESSION['message']);
 
-    // Get user inputs
-    $identifier = trim($_POST["identifier"]); // Can be username or email
+    $identifier = trim($_POST["identifier"]);
     $new_password = $_POST["new_password"];
     $confirm_password = $_POST["confirm_password"];
 
@@ -22,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($new_password) < 8) {
         $_SESSION['message'] = ["type" => "error", "text" => "Password must be at least 8 characters long."];
     } else {
-        // Check if the user exists
+        // Check if user exists based on username or email
         $qry = "SELECT * FROM user_creden WHERE username = ? OR email = ?";
         $stmt = mysqli_stmt_init($conn);
 
@@ -32,21 +28,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = mysqli_stmt_get_result($stmt);
 
             if ($user = mysqli_fetch_assoc($result)) {
-                // User exists, proceed to update password
-                $update_qry = "UPDATE user_creden SET pass = ? WHERE id = ?";
-                $update_stmt = mysqli_stmt_init($conn);
+                // Check if the provided security question and answer match
+                if ($user['security_question'] == $_POST['question'] && $user['security_answer'] == $_POST['answer']) {
+                    // Update the password directly without hashing (as per your request)
+                    $update_qry = "UPDATE user_creden SET pass = ? WHERE id = ?";
+                    $update_stmt = mysqli_stmt_init($conn);
 
-                if (mysqli_stmt_prepare($update_stmt, $update_qry)) {
-                    mysqli_stmt_bind_param($update_stmt, "si", $new_password, $user["id"]);
-                    if (mysqli_stmt_execute($update_stmt)) {
-                        $_SESSION['message'] = ["type" => "success", "text" => "Password updated successfully."];
-                        header("Location: forgot_pass.php");
-                        exit;
-                    } else {
-                        $_SESSION['message'] = ["type" => "error", "text" => "Error updating password. Please try again later."];
+                    if (mysqli_stmt_prepare($update_stmt, $update_qry)) {
+                        mysqli_stmt_bind_param($update_stmt, "si", $new_password, $user["id"]);
+                        if (mysqli_stmt_execute($update_stmt)) {
+                            $_SESSION['message'] = ["type" => "success", "text" => "Password updated successfully."];
+                            header("Location: forgot_pass.php");
+                            exit;
+                        } else {
+                            $_SESSION['message'] = ["type" => "error", "text" => "Error updating password. Please try again later."];
+                        }
                     }
                 } else {
-                    $_SESSION['message'] = ["type" => "error", "text" => "Error preparing the update query."];
+                    $_SESSION['message'] = ["type" => "error", "text" => "Security question and answer do not match."];
                 }
             } else {
                 $_SESSION['message'] = ["type" => "error", "text" => "No user found with the provided email or username."];
@@ -55,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['message'] = ["type" => "error", "text" => "Error preparing the query."];
         }
 
-        // Close the connection
         mysqli_close($conn);
     }
     header("Location: forgot_pass.php");
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -233,10 +232,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     <?php endif; ?>
     <h1>Reset Password</h1>
-    <form action="" method="post">
+    <form  method="post">
         <div class="form-group">
             <label for="identifier">Username or Email</label>
             <input type="text" id="identifier" name="identifier" placeholder="Enter your username or email" required>
+        </div>
+        <div class="form-group">
+            <label for="question">Choose Security Question:</label>
+            <select id="question" name="question" required style="color:grey" >
+                <option value="color">Favourite Color</option>
+                <option value="food">Favourite Food</option>
+                <option value="fruit">Favourite Fruit</option>
+                <option value="pet">Favourite Pet</option>
+                <option value="subject">Favourite Subject</option>
+                <option value="place">Favourite Place</option>
+                <option value="laptop">Favourite Laptop</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="answer">Enter Answer:</label>
+            <input type="text" id="answer" name="answer" placeholder="Enter your answer" required>
         </div>
         <div class="form-group">
             <label for="new_password">New Password</label>
