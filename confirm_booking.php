@@ -3,7 +3,7 @@ session_start();
 require('links.php');
 require('config.php');
 
-if (isset($_POST["pay_now"])) {
+if (isset($_POST["book_now"])) {
   // Collecting form data
   $name = $_POST['name'];
   $phone = $_POST['phone'];
@@ -223,7 +223,7 @@ if (isset($_POST["pay_now"])) {
                           <span class="sr-only">Loading...</span>
                         </div>
                         <h6 class="mb-3 text-danger" id="pay_info">Provide check-in & check-out date to enable below confirm booking button</h6>
-                        <button type="submit" name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Confirm booking</button>
+                        <button type="submit" name="book_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Confirm booking</button>
                       </div>
                     </div>
                   </form>
@@ -264,7 +264,7 @@ if (isset($_POST["pay_now"])) {
       let checkin_val = booking_form.elements['checkin'].value;
       let checkout_val = booking_form.elements['checkout'].value;
 
-      booking_form.elements['pay_now'].setAttribute('disabled',true);
+      booking_form.elements['book_now'].setAttribute('disabled',true);
 
       if(checkin_val!='' && checkout_val!='')
       {
@@ -298,7 +298,7 @@ if (isset($_POST["pay_now"])) {
           else{
             pay_info.innerHTML = "No. of Days: "+ data.days +"<br>Total Amount to Pay: Rs."+data.payment;
             pay_info.classList.remove('text-danger','text-dark');
-            booking_form.elements['pay_now'].removeAttribute('disabled');
+            booking_form.elements['book_now'].removeAttribute('disabled');
           }
           pay_info.classList.remove('d-none');
           info_loader.classList.add('d-none');
