@@ -42,6 +42,9 @@
       color: #6a1b9a; /* Change color on hover */
       }
 </style>  
+
+
+   
     
 </head>
 
@@ -54,7 +57,7 @@
     }
 
    $data = filteration($_GET);
-
+ //SELECT * le rooms ko sab data fetched garisakyo yeha id status romoved matra dekhaye pani
    $room_res = select("SELECT * FROM `rooms`  WHERE `id`=? AND `status`=? AND `removed`=?",[$data['id'],1,0],'iii');
 
    if(mysqli_num_rows($room_res)==0){
@@ -123,6 +126,7 @@
         <div class="card mb-4 border-0 shadow-sm rounded-3">
           <div class="card-body">
             <?php
+
               echo <<<price
                 <h4 class="mb-1">Rs.$room_data[price] per night</h4>
               price;
@@ -183,7 +187,18 @@
                <button onclick='checkLoginToBook($user,$room_data[id])' class="btn w-100 text-white custom-bg shadow-none mb-1">Book Now</button> 
               book;
             }
+
+
+            
+         // Display Book Now button 
+         if ($room_data['room_status'] == 'Room Booked') {
+          $book_btn = "<button  class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2' disabled>Book Now</button>";
+           
+        }
+
             ?>
+
+
             </div>
           </div>
       </div>

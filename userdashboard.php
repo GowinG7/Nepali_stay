@@ -79,6 +79,7 @@ require('config.php');
       
     </style>
 
+
      <!-- <script>
         document.addEventListener("DOMContentLoaded", function () {
         const dashboardContainer = document.querySelector(".dashboard-container");
@@ -219,7 +220,17 @@ require('config.php');
              $user = 1;
            }
           $book_btn = "<button onclick='checkLoginToBook($user,$room_data[id])' class='btn btn-sm text-white custom-bg shdaow-none'>Book Now</button>";
-         }
+          $more_details = "<a href='room_details.php?id=$room_data[id]' class='btn btn-sm btn-outline-dark shadow-none'>More details</a>";
+
+        }
+
+
+         // Display Book Now button if site is not shut down
+         if ($room_data['room_status'] == 'Room Booked') {
+          $book_btn = "<button  class='btn btn-sm  text-white custom-bg shadow-none ' disabled>Book Now</button>";
+          $more_details = "<a href='#' class='btn btn-sm btn-outline-dark shadow-none disabled' tabindex='-1' aria-disabled='true'>More details</a>";
+
+        }
 
           //print room card
               echo <<<data
@@ -237,11 +248,15 @@ require('config.php');
                         <h6 class="mb-1">Facilities</h6>
                         $facilities_data
                       </div>
+                      <div class="room-info mb-3">
+                        <h6>Total Room: $room_data[total_rooms]</h6>
+                        <h6>Status: $room_data[room_status]</h6>
+                      </div>
 
                       <div class="d-flex justify-content-evenly mb-2">
                         $book_btn  
-                      <a href="room_details.php?id=$room_data[id]" class="btn btn-sm btn-outline-dark shadow-none">More details</a>
-                      </div>
+                        $more_details
+                        </div>
 
                     </div>
                   </div>
