@@ -16,38 +16,52 @@
     }
   ?>
   <style>
-    .pop:hover {
+      /* Ensure full height for the html and body */
+      html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: whitesmoke; /* Replace with your chosen background color */
+      }
+
+      /* Flexbox for the main body layout */
+      body {
+      min-height: 100vh;
+      }
+
+      /* Content container to fill available space */
+      .container {
+      flex: 1; /* Ensures content stretches to push the footer to the bottom */
+      }
+
+      /* Hover effect for the facilities box */
+      .pop:hover {
       border-top-color: var(--teal) !important;
       transform: scale(1.03);
       transition: all 0.3s;
-
-    }
-  </style>
-  <style>
-    
-
-    @media screen and (max-width:575px) {
-      .availability-form {
-        margin-top: 25px;
-        padding: 0 35px;
       }
-    }
 
-    body {
-      background-color: whitesmoke;
-      /* Replace with your chosen color code */
-    }
-
-    .custom-navbar {
-      background-color: #65d9ee;
-      /* Dark Blue color */
-       }
-      /*for making footer same as the navbar*/
-      
-    .container-fluid-footer {
-    background-color: #65d9ee; /* change this to your desired background color */
+      /* Navbar styling */
+      .custom-navbar {
+      background-color: #65d9ee; /* Dark Blue color */
       }
-  
+
+      /* Footer styling */
+      .container-fluid-footer {
+      background-color: #65d9ee; /* Matches navbar color */
+      text-align: center;
+      padding: 10px 0;
+      margin-top: auto; /* Ensures the footer sticks to the bottom */
+      }
+
+      /* Optional media query for smaller screens */
+      @media screen and (max-width: 575px) {
+      .container-fluid-footer {
+      padding: 15px 0; /* Adjust spacing for better display */
+      }
+      }
+
   </style>
 </head>
 
