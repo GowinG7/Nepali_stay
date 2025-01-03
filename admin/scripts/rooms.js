@@ -14,8 +14,12 @@
     data.append('name',add_room_form.elements['name'].value);
     data.append('area',add_room_form.elements['area'].value);
     data.append('price',add_room_form.elements['price'].value);
-    data.append('quantity',add_room_form.elements['quantity'].value);
-    data.append('description',add_room_form.elements['description'].value);
+    data.append('total_rooms',add_room_form.elements['total_rooms'].value);
+  
+    // Get the selected room status value
+    data.append('room_status', add_room_form.elements['room_status'].value);
+  
+    data.append('description', add_room_form.elements['description'].value);
 
     let features = [];
     add_room_form.elements['features'].forEach(el =>{
@@ -99,7 +103,12 @@
         edit_room_form.elements['name'].value = data.roomdata.name;
         edit_room_form.elements['area'].value = data.roomdata.area;
         edit_room_form.elements['price'].value = data.roomdata.price;
-        edit_room_form.elements['quantity'].value = data.roomdata.quantity;
+        edit_room_form.elements['total_rooms'].value = data.roomdata.total_rooms;
+        
+         // Set Room Status Select
+         edit_room_form.elements['room_status'].value = data.roomdata.room_status;
+
+        
         edit_room_form.elements['description'].value = data.roomdata.description;
         
         edit_room_form.elements['room_id'].value = data.roomdata.id;
@@ -135,8 +144,10 @@
     data.append('name',edit_room_form.elements['name'].value);
     data.append('area',edit_room_form.elements['area'].value);
     data.append('price',edit_room_form.elements['price'].value);
-    data.append('quantity',edit_room_form.elements['quantity'].value);
-    data.append('description',edit_room_form.elements['description'].value);
+    data.append('total_rooms',edit_room_form.elements['total_rooms'].value);
+  
+    data.append('room_status', edit_room_form.elements['room_status'].value);
+    data.append('description', edit_room_form.elements['description'].value);
 
     let features = [];
     edit_room_form.elements['features'].forEach(el =>{

@@ -41,7 +41,7 @@ adminLogin(); //essentials file ma xa
                         <th scope="col">Username</th>
                         <th scope="col">Phone no.</th>
                         <th scope="col">Verified</th>
-                        <th scope="col">Status</th>
+              
                         <th scope="col">Date</th>
                         <th scope="col">Action</th>
                       </tr>

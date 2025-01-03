@@ -41,7 +41,8 @@ adminLogin(); //essentials file ma xa
                         <th scope="col">Name</th>
                         <th scope="col">Area</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Rooms</th>
+                        <th scope="col">Room Status</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                       </tr>
@@ -82,8 +83,12 @@ adminLogin(); //essentials file ma xa
                     <input type="number" name="price" class="form-control shadow-none" required>
                   </div>
                   <div class=" col-md-6 mb-3">
-                    <label class="form-label fw-bold">Quantity</label>
-                    <input type="number" name="quantity" class="form-control shadow-none" required>
+                    <label class="form-label fw-bold">Total Rooms</label>
+                    <input type="number" name="total_rooms" class="form-control shadow-none" required>
+                  </div>
+                  <div class=" col-md-6 mb-3">
+                    <label class="form-label fw-bold">Room Status</label>
+                    <input type="text" name="available_rooms" class="form-control shadow-none" required>
                   </div>
                   <div class="col-12 mb-3">
                     <label class="form-label fw-bold">Features</label>
@@ -159,9 +164,20 @@ adminLogin(); //essentials file ma xa
                     <input type="number" name="price" class="form-control shadow-none" required>
                   </div>
                  <div class=" col-md-6 mb-3">
-                    <label class="form-label fw-bold">Quantity</label>
-                    <input type="number" name="quantity" class="form-control shadow-none" required>
+                    <label class="form-label fw-bold">Total Rooms</label>
+                    <input type="number" name="total_rooms" class="form-control shadow-none" required>
                   </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Room Status</label>
+                    <select name="room_status" class="form-select shadow-none" required>
+                      <option value="Available">Available</option>
+                      <option value="Room Booked">Room Booked</option>
+                    </select>
+                  </div>
+
+
+
                   <div class="col-12 mb-3">
                     <label class="form-label fw-bold">Features</label>
                     <div class="row">

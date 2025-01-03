@@ -38,7 +38,7 @@
                 get_bookings();
             }
             else{
-            alert('success','Booking Confirm failed!');
+            alert('error','Booking Confirm failed!');
             }
         }
         xhr.send('toggle_verify='+id+'&value='+val);

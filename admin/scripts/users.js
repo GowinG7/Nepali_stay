@@ -18,30 +18,7 @@
     xhr.send('get_users');
     }
 
-    //users ma status active rw inactive garauna baki code 
-    //yeha bata ajax ko users.php ma request janxa
-    function toggle_status(id,val)
-    {
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST","ajax/users.php",true);
-    xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-
-    /*xhr.onreadystatechange = function(){
-    if(this.readyState==4 && this.status==200){
-    //yesko satto short:*/
-    xhr.onload = function(){
-        if(this.responseText == 1){
-            alert('success', 'Status toggled');
-            get_users();
-        }
-        else{
-        alert('success','Status toggled failed');
-        }
-    }
-    xhr.send('toggle_status='+id+'&value='+val);
-    }
+   
 
     //users ma verified grna 
     //yeha bata ajax ko users.php ma request janxa
@@ -98,7 +75,7 @@
     }
 
         }
-    //username ko basis ma seach garney users
+    //user ko naam basis ma seach garney users
     function search_user(name) {
         let xhr = new XMLHttpRequest();
         xhr.open("POST","ajax/users.php",true);
@@ -109,11 +86,14 @@
         //yesko satto short:*/
         xhr.onload = function(){
             //room-data id line 51 ma xa tbody ma yo id ma rooms haru lyayerw rakhey ho
-            document.getElementById('users-data').innerHTML = this.responseText;
+            document.getElementById('users-data').innerHTML = this.responseText
+            
     
         }
-        xhr.send('search_user&name='+name);  
-      }
+        xhr.send('search_user&name='  + name);     
+        }
+      
+
 
     window.onload = function(){
         get_users(); //window load huney bitikaii get_users() call huney

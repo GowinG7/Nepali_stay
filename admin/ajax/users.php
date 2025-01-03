@@ -50,7 +50,7 @@
                 <td>$row[username]</td>
                 <td>$row[phone]</td>
                 <td>$verified</td>
-                <td>$status</td>
+              
                 <td>$date</td>
                 <td>$del_btn</td>
               </tr>
@@ -60,21 +60,7 @@
         echo $data;
     }
     
-  //request yeha aauxa toggle status ko users.js file bata 
-    if(isset($_POST['toggle_status']))
-    {
-    $frm_data = filteration($_POST);
-
-    $q = "UPDATE `user_creden` SET `status`=? WHERE `id`=? ";
-    $v = [$frm_data['value'], $frm_data['toggle_status']];
-
-    if(update($q,$v,'ii')){
-        echo 1;
-    }
-    else{
-        echo 0;
-    }
-    }
+ 
 
     //request yeha aauxa toggle status ko users.js file bata 
     if(isset($_POST['toggle_verify']))

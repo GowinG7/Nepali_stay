@@ -12,6 +12,7 @@ if (isset($_POST["book_now"])) {
   $checkin = $_POST['checkin'];
   $checkout = $_POST['checkout'];
   $room_price = $_SESSION['room']['price']; // Room price from session
+  $room_id = $_SESSION['room']['id']; // Room id from session
 
   // Calculate the number of days and total payment
   $checkin_date = new DateTime($checkin);
@@ -28,14 +29,14 @@ if (isset($_POST["book_now"])) {
   }
 
   // Prepare and execute query to insert booking details
-  $query = "INSERT INTO `booking` (`name`, `phone`, `email`, `roomname`, `checkin`, `checkout`, `days`, `payment`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+  $query = "INSERT INTO `booking` (`name`, `phone`, `email`, `roomname`, `checkin`, `checkout`, `days`, `payment`,`room_id`) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
   $stmt = $con->prepare($query);
 
   if ($stmt === false) {
     die("Failed to prepare statement: " . $con->error);
   }
 
-  $stmt->bind_param("ssssssii", $name, $phone, $email, $room_name, $checkin, $checkout, $days, $total_payment);
+  $stmt->bind_param("ssssssiii", $name, $phone, $email, $room_name, $checkin, $checkout, $days, $total_payment,$room_id);
 
   if ($stmt->execute()) {
     // Booking was successful

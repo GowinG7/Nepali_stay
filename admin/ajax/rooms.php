@@ -12,10 +12,10 @@
     $frm_data = filteration($_POST);
     $flag = 0;
 
-    $q1 = "INSERT INTO `rooms`(`name`, `area`, `price`, `quantity`, `description`) VALUES(?,?,?,?,?)";
-    $values = [$frm_data['name'], $frm_data['area'], $frm_data['price'], $frm_data['quantity'], $frm_data['description']];
+    $q1 = "INSERT INTO `rooms`(`name`, `area`, `price`, `total_rooms`,`room_status`, `description`) VALUES(?,?,?,?,?,?)";
+    $values = [$frm_data['name'], $frm_data['area'], $frm_data['price'], $frm_data['total_rooms'],$frm_data['room_status'], $frm_data['description']];
 
-    if(insert($q1,$values,'siiis')){
+    if(insert($q1,$values,'siiiss')){
         $flag = 1;  
     }
 
@@ -85,7 +85,8 @@
             <td>$row[name]</td>
             <td>$row[area] sq. ft.</td>
             <td>Rs.$row[price]</td>
-            <td>$row[quantity]</td>
+            <td>$row[total_rooms]</td>
+            <td>$row[room_status]</td>
             <td>$status</td>
             <td>
                 <button type='button' onclick='edit_details($row[id])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit-room'>
@@ -149,10 +150,10 @@
         $frm_data = filteration($_POST);
         $flag = 0;
 
-        $q1 = "UPDATE `rooms` SET `name`=?, `area`=?, `price`=?, `quantity`=?, `description`=? WHERE `id`=?";
-        $values = [$frm_data['name'], $frm_data['area'], $frm_data['price'], $frm_data['quantity'], $frm_data['description'],$frm_data['room_id']];
+        $q1 = "UPDATE `rooms` SET `name`=?, `area`=?, `price`=?, `total_rooms`=?,`room_status`=?, `description`=? WHERE `id`=?";
+        $values = [$frm_data['name'], $frm_data['area'], $frm_data['price'], $frm_data['total_rooms'],$frm_data['room_status'], $frm_data['description'],$frm_data['room_id']];
 
-        if(update($q1,$values,'siiisi')){
+        if(update($q1,$values,'siiissi')){
           $flag = 1;
         }
 

@@ -20,6 +20,27 @@
     
         while ($row = mysqli_fetch_assoc($res)) {
             
+
+            // Check if booking is verified and set the status
+            $booking_status = 'Booking Not Confirmed';  // Default status
+
+            if ($row['verified'] == 1) {
+            $booking_status = 'Room Booked';  // If verified
+            }
+
+            // Check if booking has expired based on check-out date
+            $checkout_date = $row['checkout'];
+            $today = date('Y-m-d');  // Get today's date
+            if ($checkout_date <= $today) {
+            $booking_status = 'Booking Expired';  // If the check-out date is today or in the past
+            }
+
+            // Formatting the date for display
+            $date = date("d-m-Y", strtotime($row['datentime']));
+
+
+
+
             // Delete button for unverified booking only
             $del_btn = "<button type='button' onclick='remove_bookings($row[sr_no])' class='btn btn-danger shadow-none btn-sm'> 
                 <i class='bi bi-trash'></i> Delete
@@ -35,7 +56,7 @@
                     <i class='bi bi-check-lg'></i> Confirmed
                     </button>";
                 $del_btn = ""; // Hide delete button for verified users
-            }
+            } 
     
     
             $date = date("d-m-Y", strtotime($row['datentime']));
@@ -48,12 +69,14 @@
                 <td>$row[phone]</td>
                 <td>$row[email]</td>
                 <td>$row[roomname]</td>
+                <td>$row[room_id]</td>
                 <td>$row[checkin]</td>
                 <td>$row[checkout]</td>
                 <td>$row[days] night</td>
                 <td>Rs.$row[payment]</td>
                 <td>$verified</td>
                 <td>$date</td>
+                <td>$booking_status</td> 
                 <td>$del_btn</td>
               </tr>
             ";
