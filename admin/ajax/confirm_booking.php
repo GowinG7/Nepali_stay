@@ -23,7 +23,7 @@ if(isset($_POST['check_availability']))
     }
 
     // Check in and out validations
-    $today_date = new DateTime(date("Y-m-d"));
+    $today_date = date("Y-m-d");
     $checkin_date = new DateTime($frm_data['check_in']);
     $checkout_date = new DateTime($frm_data['check_out']);
 

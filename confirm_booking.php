@@ -40,7 +40,7 @@ if (isset($_POST["book_now"])) {
 
   if ($stmt->execute()) {
     // Booking was successful
-    echo "<script>alert('Booking confirmed successfully!. You will receive the confirmation from admin in email shortly');</script>";
+    echo "<script>alert('Booking request send to server Successfully!. You will receive the Booking confirmation from admin through email and also hotel staff will contact you in shortly');</script>";
   } else {
     // Booking failed
     echo "<script>alert('Error confirming booking. Please try again later.');</script>";
