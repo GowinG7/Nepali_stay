@@ -21,28 +21,26 @@
         while ($row = mysqli_fetch_assoc($res)) {
             
 
-            // Check if booking is verified and set the status
-            $booking_status = 'Booking Not Confirmed';  // Default status
+           
 
-            if ($row['verified'] == 1) {
-            $booking_status = 'Room Booked';  // If verified
-            }
-
-
-            // Set default time zone (optional, if needed)
-            date_default_timezone_set('Asia/Kathmandu');  // Set the time zone to Kathmandu for Nepal
-
-            // Check if booking has expired based on check-out date
-            $checkout_date = $row['checkout'];
-            $today = date('Y-m-d');  // Get today's date
-            if ($checkout_date <= $today) {
-            $booking_status = 'Booking Expired';  // If the check-out date is today or in the past
-            }
-
-            // Formatting the date for display
+            // Formatting the date for display -- it is today date
             $date = date("d-m-Y", strtotime($row['datentime']));
 
 
+             // Check if booking is verified and set the status
+             $booking_status = 'Booking Not Confirmed';  // Default status
+
+             if ($row['verified'] == 1) {
+             $booking_status = 'Room Booked';  // If verified
+             }
+             // Set default time zone (optional, if needed)
+             date_default_timezone_set('Asia/Kathmandu');  // Set the time zone to Kathmandu for Nepal
+             // Check if booking has expired based on check-out date
+             $checkout_date = $row['checkout'];
+         
+             if ($checkout_date <= $date) {
+             $booking_status = 'Booking Expired';  // If the check-out date is today or in the past
+             }
 
 
             // Delete button for unverified booking only
