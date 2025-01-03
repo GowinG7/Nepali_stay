@@ -5,6 +5,8 @@ require('../db_config.php');
 require('../essentials.php');
 
 //date_default_timezone_set("Asia/Nepal"); rakhda today date ma jheu garyo khali earlier earlier
+ date_default_timezone_set('Asia/Kathmandu');  // Set the time zone to Kathmandu for Nepal
+
 
 if(isset($_POST['check_availability']))
 {

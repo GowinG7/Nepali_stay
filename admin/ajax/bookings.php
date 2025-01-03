@@ -28,6 +28,10 @@
             $booking_status = 'Room Booked';  // If verified
             }
 
+
+            // Set default time zone (optional, if needed)
+            date_default_timezone_set('Asia/Kathmandu');  // Set the time zone to Kathmandu for Nepal
+
             // Check if booking has expired based on check-out date
             $checkout_date = $row['checkout'];
             $today = date('Y-m-d');  // Get today's date

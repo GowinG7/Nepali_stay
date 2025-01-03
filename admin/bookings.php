@@ -32,7 +32,7 @@ adminLogin(); //essentials file ma xa
                 </div>
 
               <div class="table-responsive">
-                  <table class="table table-hover border text-center" style="min-width: 1550px;">
+                  <table class="table table-hover border text-center" style="min-width: 1650px;">
                     <thead >
                       <tr class="bg-dark text-light">
                         <th scope="col">#</th>
