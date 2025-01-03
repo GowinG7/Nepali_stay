@@ -1,7 +1,7 @@
 <?php
 require('admin/db_config.php');
 require('admin/essentials.php');
-require('links.php'); 
+
 
 ?>
 
@@ -29,6 +29,7 @@ if($settings_r['shutdown']==1){
 <head>
   <title>Home Page Of Nepali Stay</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     .availability-form {
@@ -91,12 +92,12 @@ if($settings_r['shutdown']==1){
         <li class="nav-item">
           <a href="javascript:void(0);" class="nav-link me-2" onclick="showLoginAlert()">About</a>
         </li>
-        
       </ul>
+
       <a href="loginsignup/login.php" class="btn btn-primary me-2" style="color:black;background-color:white;border:2px solid grey">Login</a>
       <a href="loginsignup/signup.php" class="btn btn-primary" style="color:black;background-color:white;border:2px solid grey">Register</a>
-    </div>
-  </nav>
+      </div>
+   </nav>
 
   <!-- Carousel -->
   <div class="container-fluid px-lg-4 mt-4">
@@ -374,6 +375,9 @@ if($settings_r['shutdown']==1){
 
     
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 

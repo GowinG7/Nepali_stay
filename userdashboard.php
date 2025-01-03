@@ -58,6 +58,10 @@ require('config.php');
         background-color: rgb(78, 171, 207);
         /* Dark Blue color */
       }
+        .navbar-collapse {
+          z-index: 1050; /* Ensure it's above other elements */
+        }
+
         /*to make the footer as same as the navbar bg color */
         .container-fluid-footer{
           background-color: rgb(78, 171, 207);
