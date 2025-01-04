@@ -21,10 +21,12 @@
         while ($row = mysqli_fetch_assoc($res)) {
             
 
-           
+            // Set default time zone (optional, if needed)
+            date_default_timezone_set("Asia/Kathmandu");  // Set the time zone to Kathmandu for Nepal
+        
 
             // Formatting the date for display -- it is today date
-            $date = date("d-m-Y", strtotime($row['datentime']));
+            $date = date("Y-m-d");
 
 
              // Check if booking is verified and set the status
@@ -33,9 +35,7 @@
              if ($row['verified'] == 1) {
              $booking_status = 'Room Booked';  // If verified
              }
-             // Set default time zone (optional, if needed)
-             date_default_timezone_set('Asia/Kathmandu');  // Set the time zone to Kathmandu for Nepal
-             // Check if booking has expired based on check-out date
+                 // Check if booking has expired based on check-out date
              $checkout_date = $row['checkout'];
          
              if ($checkout_date <= $date) {
@@ -61,7 +61,7 @@
             } 
     
     
-            $date = date("d-m-Y", strtotime($row['datentime']));
+          //  $date = date("d-m-Y", strtotime($row['datentime']));
     
             // Add the row to the data string
             $data .= " 
