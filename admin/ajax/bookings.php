@@ -14,30 +14,27 @@
             echo "No bookings found.";
             exit;
         }
+        // Set default time zone (optional, if needed)
+        date_default_timezone_set("Asia/Kathmandu");  // Set the time zone to Kathmandu for Nepal         
+        // Formatting the date for display -- it is today date
+        $date = date("Y-m-d");
+        $data = ""; // Initial value null
         $i = 1;
     
-        $data = ""; // Initial value null
+        
     
         while ($row = mysqli_fetch_assoc($res)) {
             
-
-            // Set default time zone (optional, if needed)
-            date_default_timezone_set("Asia/Kathmandu");  // Set the time zone to Kathmandu for Nepal
-        
-
-            // Formatting the date for display -- it is today date
-            $date = date("Y-m-d");
-
-
+            // Check if booking has expired based on check-out date
+            $checkout_date = $row['checkout'];
+                
              // Check if booking is verified and set the status
              $booking_status = 'Booking Not Confirmed';  // Default status
 
              if ($row['verified'] == 1) {
              $booking_status = 'Room Booked';  // If verified
              }
-                 // Check if booking has expired based on check-out date
-             $checkout_date = $row['checkout'];
-         
+                 
              if ($checkout_date <= $date) {
              $booking_status = 'Booking Expired';  // If the check-out date is today or in the past
              }
