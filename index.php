@@ -56,6 +56,16 @@ if($settings_r['shutdown']==1){
     .container-fluid-footer {
       background-color: rgb(78, 171, 207);
     }
+    .btn-booknow{
+      border: 2px solid ;
+      background-color: rgb(36, 158, 206);
+      color: white;
+    }
+    .btn-booknow:hover{
+      background-color: rgb(12, 207, 61);
+      border:2px solid;
+      color:white;
+    }
 
     
   </style>
@@ -166,7 +176,7 @@ if($settings_r['shutdown']==1){
             if (isset($_SESSION['user']) && $_SESSION['user'] == true) {
                 $user = 1;
             }
-            $book_btn = "<button onclick='checkLoginToBook($user,$room_data[id])' class='btn btn-sm text-white custom-bg shdaow-none'>Book Now</button>";
+            $book_btn = "<button onclick='checkLoginToBook($user,$room_data[id])' class='btn btn-sm btn-booknow shadow-none'>Book Now</button>";
             }
 
 
