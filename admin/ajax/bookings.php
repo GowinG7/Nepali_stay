@@ -3,6 +3,12 @@
     require('../db_config.php');
     require('../essentials.php');
     adminlogin();
+ // Set default time zone (optional, if needed)
+        date_default_timezone_set("Asia/Kathmandu");  // Set the time zone to Kathmandu for Nepal         
+        // Formatting the date for display -- it is today date
+        
+        $current_time = date('Y-m-d');
+        $date = date('Y-m-d', strtotime($current_time . ' -1 day'));
 
     if (isset($_POST['get_bookings'])) {
         $res = selectAll('booking');
@@ -14,11 +20,7 @@
             echo "No bookings found.";
             exit;
         }
-        // Set default time zone (optional, if needed)
-        date_default_timezone_set("Asia/Kathmandu");  // Set the time zone to Kathmandu for Nepal         
-        // Formatting the date for display -- it is today date
-        $date = date("Y-m-d");
-        $data = ""; // Initial value null
+               $data = ""; // Initial value null
         $i = 1;
     
         
@@ -56,7 +58,6 @@
                     </button>";
                 $del_btn = ""; // Hide delete button for verified users
             } 
-    
     
           //  $date = date("d-m-Y", strtotime($row['datentime']));
     
@@ -140,10 +141,24 @@
               $verified = "<span class='badge bg-success'> <i class='bi bi-check-lg'></i> </span>";
               $del_btn = ""; //delete button nadekhinet matlab blank
             }
+            
+              // Check if booking has expired based on check-out date
+              $checkout_date = $row['checkout'];
+                
+              // Check if booking is verified and set the status
+              $booking_status = 'Booking Not Confirmed';  // Default status
+ 
+              if ($row['verified'] == 1) {
+              $booking_status = 'Room Booked';  // If verified
+              }
+                  
+              if ($checkout_date <= $date) {
+              $booking_status = 'Booking Expired';  // If the check-out date is today or in the past
+              }
+ 
           
     
-            $date = date("d-m-Y", strtotime($row['datentime']));
-    
+              
             //users.php ma bayeko tbody ko bitra data leuna xa so tesma dheraie row haru banai fetch grna
             $data .= " 
               <tr>
@@ -152,17 +167,19 @@
                 <td>$row[phone]</td>
                 <td>$row[email]</td>
                 <td>$row[roomname]</td>
+                <td>$row[room_id]</td>
                 <td>$row[checkin]</td>
                 <td>$row[checkout]</td>
                 <td>$row[days] night</td>
                 <td>Rs.$row[payment]</td>
                 <td>$verified</td>
                 <td>$date</td>
+                <td>$booking_status</td>
                 <td>$del_btn</td>
               <tr>
             ";
                 $i++;
             }
-            echo $data;
+            echo $data ? $data : "<tr><td colspan='14'>No bookings found</td></tr>";
         }
 ?>

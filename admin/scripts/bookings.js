@@ -72,7 +72,6 @@
         xhr.send(data); //data is sent cause all the things(name,picture,add_image) are append in this variable
 
     }
-
         }
     //username ko basis ma seach garney users
     function search_bookings(name) {

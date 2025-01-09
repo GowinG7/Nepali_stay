@@ -138,7 +138,7 @@
                 <td>$row[username]</td>
                 <td>$row[phone]</td>
                 <td>$verified</td>
-                <td>$status</td>
+               
                 <td>$date</td>
                 <td>$del_btn</td>
               <tr>
