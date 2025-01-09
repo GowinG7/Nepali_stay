@@ -8,6 +8,8 @@ adminLogin(); //essentials file ma xa
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title>Admin Panel - Bookings</title>
         <?php
         require('links.php');

@@ -93,5 +93,3 @@
     window.onload = function(){
         get_bookings(); //window load huney bitikaii get_users() call huney
     }
-
-

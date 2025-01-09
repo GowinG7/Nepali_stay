@@ -3,12 +3,17 @@
     require('../db_config.php');
     require('../essentials.php');
     adminlogin();
- // Set default time zone (optional, if needed)
-        date_default_timezone_set("Asia/Kathmandu");  // Set the time zone to Kathmandu for Nepal         
-        // Formatting the date for display -- it is today date
-        
-        $current_time = date('Y-m-d');
-        $date = date('Y-m-d', strtotime($current_time . ' -1 day'));
+ 
+    date_default_timezone_set("Asia/Kathmandu");
+
+    $date1 = new DateTime();
+    $date1->modify('-13 hours -45 minutes');
+    
+    // Format the date in the desired format (Y-m-d)
+   // $date = $date1->format('Y-m-d h:i:s');
+    $date = $date1->format('Y-m-d');
+    
+    
 
     if (isset($_POST['get_bookings'])) {
         $res = selectAll('booking');
@@ -90,6 +95,7 @@
     if(isset($_POST['toggle_verify']))
     {
     $frm_data = filteration($_POST);
+    
 
     $q = "UPDATE `booking` SET `verified`=? WHERE `sr_no`=? ";
     $v = [$frm_data['value'], $frm_data['toggle_verify']];
