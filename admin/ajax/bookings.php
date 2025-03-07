@@ -65,6 +65,7 @@
             } 
     
           //  $date = date("d-m-Y", strtotime($row['datentime']));
+         
     
             // Add the row to the data string
             $data .= " 

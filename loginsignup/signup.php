@@ -29,9 +29,9 @@ if (isset($_POST["submit"])) {
     if (!preg_match("/^[a-z0-9.]+@(gmail|yahoo|outlook)\.com$/", $email)) {
         array_push($errors, "Email must contains a-z,0-9,.(dot/peroids) and end with @gmail.com, @yahoo.com, or @outlook.com.");
     }
-    if (!preg_match("/^\d{10}$/", $phone)) {
-        array_push($errors, "Phone number must be exactly 10 digits.");
-    }
+    // if (!preg_match("/^\d{10}$/", $phone)) {
+    //     array_push($errors, "Phone number must be exactly 10 digits.");
+    // }
     if (strlen($password) < 8) {
         array_push($errors, "Password must be at least 8 characters long.");
     }
@@ -143,8 +143,8 @@ if (isset($_POST["submit"])) {
             </div>
 
             <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter phone number" required>
+                <label for="phone">Phone Number (Optional)</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}"  >
                 <div class="error-message" id="phone_error"></div> <!-- Error message container -->
             </div>
 
@@ -224,14 +224,14 @@ if (isset($_POST["submit"])) {
                 }
             });
 
-            $('#phone').on('blur', function () {
+         /*   $('#phone').on('blur', function () {
                 var phone = $(this).val();
                 if (!/^\d{10}$/.test(phone)) {
                     $('#phone_error').text('Phone number must be exactly 10 digits.').show();
                 } else {
                     $('#phone_error').hide();
                 }
-            });
+            }); */
 
             $('#pass').on('blur', function () {
                 var pass = $(this).val();

@@ -134,7 +134,7 @@ if($settings_r['shutdown']==1){
     <div class="row">
       <?php
 
-            $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=?  ORDER BY `id` DESC LIMIT 3" ,[1,0],'ii');
+            $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=?  ORDER BY `id` " ,[1,0],'ii');
 
             while ($room_data = mysqli_fetch_assoc($room_res)) {
             //get features of room
@@ -224,13 +224,13 @@ if($settings_r['shutdown']==1){
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
      <!--Dynamically fetch garayeka xau-->
      <?php
-     $res = mysqli_query($con, "SELECT * FROM facilities ORDER BY id DESC LIMIT 5");
+     $res = mysqli_query($con, "SELECT * FROM facilities ORDER BY id desc limit 5");
       $path = FACILITIES_IMG_PATH;
 
       while ($row = mysqli_fetch_assoc($res)) {
         echo <<<data
-          <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-            <img src="$path$row[icon]" width="40px">
+          <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3" >
+            <img src="$path$row[icon]" width="40px"  >
             <h5 class="mt-3 ">$row[name]</h5>
           </div>
          data;
@@ -342,7 +342,7 @@ if($settings_r['shutdown']==1){
 
     <div>
     <h6 class="text-center bg-dark text-white h-font p-3 m-0">
-    Designed and Developed by Gobinda and Yogesh<br>&copy; Copyright reserved
+    Designed and Developed by Gobinda Ghimire and Yogesh Ghimire<br>&copy; Copyright reserved
     </h6>
     </div>
  

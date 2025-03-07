@@ -100,7 +100,7 @@ session_start() ?>
 
           // Check booking availability
           $book_btn = "";
-        
+          $more_details = "";
           if (!$settings_r['shutdown'] == 1) {
             $user = 0;
             if (isset($_SESSION['user']) && $_SESSION['user'] == true) {

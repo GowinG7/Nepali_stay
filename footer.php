@@ -75,7 +75,7 @@ $about_r = mysqli_fetch_assoc(select($about_q,$values,'i'));
 
 <div>
   <h6 class="text-center bg-dark text-white h-font p-3 m-0">
-    Designed and Developed by Gobinda and Yogesh<br>&copy; Copyright reserved
+    Designed and Developed by Gobinda Ghimire and Yogesh Ghimire<br>&copy; Copyright reserved
   </h6>
 </div>
 
